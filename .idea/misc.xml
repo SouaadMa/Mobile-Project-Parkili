@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/DELL/AndroidStudioProjects/ProjetTDMParkili/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/ProjetTDMParkili/app/src/main/res/drawable/custom_button.xml" value="0.2115" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/ProjetTDMParkili/app/src/main/res/drawable/custom_button_thickpurple.xml" value="0.2115" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/ProjetTDMParkili/app/src/main/res/drawable/custom_button_white.xml" value="0.2" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/ProjetTDMParkili/app/src/main/res/drawable/shape.xml" value="0.2115" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/ProjetTDMParkili/app/src/main/res/layout/activity_main.xml" value="0.22" />
       </map>
     </option>
   </component>

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ProjetTDM-Parkili.iml" filepath="$PROJECT_DIR$/.idea/modules/ProjetTDM-Parkili.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ProjetTDM-Parkili.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ProjetTDM-Parkili.app.iml" />
     </modules>
   </component>
 </project>

@@ -1,6 +1,7 @@
 package com.example.projettdm_parkili
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,6 +28,13 @@ class HomeActivity : AppCompatActivity() {
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = ParkingLotsList_Adapter(this,loadData())
 
+        binding.textViewMapView.setOnClickListener{
+            if(binding.mapViewBackground.visibility == View.INVISIBLE) flipViews()
+        }
+
+        binding.textViewListView.setOnClickListener{
+            if(binding.ListViewBackground.visibility == View.INVISIBLE) flipViews()
+        }
 
     }
 
@@ -41,6 +49,19 @@ class HomeActivity : AppCompatActivity() {
         data.add(ParkingLot("Parking", "Closed", 40, "Algiers", 200.0, 20, R.drawable.parking1))
         data.add(ParkingLot("Parking", "Closed", 40, "Algiers", 200.0, 20, R.drawable.parking1))
         return data
+    }
+
+    private fun flipViews() {
+        val backg_listview = binding.ListViewBackground
+        val backg_mapview = binding.mapViewBackground
+        if (backg_listview.visibility==View.VISIBLE) {
+            backg_listview.visibility = View.INVISIBLE
+            backg_mapview.visibility = View.VISIBLE
+        }
+        else {
+            backg_mapview.visibility = View.INVISIBLE
+            backg_listview.visibility = View.VISIBLE
+        }
     }
 
 }

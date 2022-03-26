@@ -3,7 +3,6 @@ package com.example.projettdm_parkili
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import com.example.projettdm_parkili.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -25,11 +24,23 @@ class MainActivity : AppCompatActivity() {
             openSignUpActivity()
         }
 
+        var button_signin = binding.buttonSignin
+        button_signin.setOnClickListener {
+            openHomeActivity()
+        }
 
     }
+
     fun openSignUpActivity(){
 
         var intent = Intent(this, SignUpActivity::class.java )
+        startActivity(intent)
+
+    }
+
+    fun openHomeActivity(){
+
+        var intent = Intent(this, HomeActivity::class.java )
         startActivity(intent)
 
     }

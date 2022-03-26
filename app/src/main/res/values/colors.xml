@@ -11,4 +11,7 @@
     <color name="brick_red">#A30015</color>
     <color name="salmon_red">#FF6B6B</color>
     <color name="thick_blue">#413F54</color>
+    <color name="super_light_grey">#C4C4C4</color>
+    <color name="goodnews_green">#06908F</color>
+    <color name="badnews_red">#C73E1D</color>
 </resources>

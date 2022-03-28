@@ -101,7 +101,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Map view"
-        android:textColor="@color/white"
+        android:textColor="@color/super_light_grey"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/mapView_background"
         app:layout_constraintEnd_toEndOf="@+id/mapView_background"

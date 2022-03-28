@@ -40,14 +40,14 @@ class HomeActivity : AppCompatActivity() {
 
     private fun loadData(): List<ParkingLot> {
         val data = mutableListOf<ParkingLot>()
-        data.add(ParkingLot("Parking", "Closed", 40, "Algiers", 200.0, 20, R.drawable.parking1))
-        data.add(ParkingLot("Parking", "Closed", 40, "Algiers", 200.0, 20, R.drawable.parking1))
-        data.add(ParkingLot("Parking", "Closed", 40, "Algiers", 200.0, 20, R.drawable.parking1))
-        data.add(ParkingLot("Parking", "Closed", 40, "Algiers", 200.0, 20, R.drawable.parking1))
-        data.add(ParkingLot("Parking", "Closed", 40, "Algiers", 200.0, 20, R.drawable.parking1))
-        data.add(ParkingLot("Parking", "Closed", 40, "Algiers", 200.0, 20, R.drawable.parking1))
-        data.add(ParkingLot("Parking", "Closed", 40, "Algiers", 200.0, 20, R.drawable.parking1))
-        data.add(ParkingLot("Parking", "Closed", 40, "Algiers", 200.0, 20, R.drawable.parking1))
+        data.add(ParkingLot("Parking", "Closed", 40, "Algiers", 200.0, 20, R.drawable.parking1, 3.5, "08:00", "22:00", 400.0))
+        data.add(ParkingLot("Parking", "Closed", 40, "Algiers", 200.0, 20, R.drawable.parking1, 3.5, "08:00", "22:00", 400.0))
+        data.add(ParkingLot("Parking", "Closed", 40, "Algiers", 200.0, 20, R.drawable.parking1, 3.5, "08:00", "22:00", 400.0))
+        data.add(ParkingLot("Parking", "Closed", 40, "Algiers", 200.0, 20, R.drawable.parking1, 3.5, "08:00", "22:00", 400.0))
+        data.add(ParkingLot("Parking", "Closed", 40, "Algiers", 200.0, 20, R.drawable.parking1, 3.5, "08:00", "22:00", 400.0))
+        data.add(ParkingLot("Parking", "Closed", 40, "Algiers", 200.0, 20, R.drawable.parking1, 3.5, "08:00", "22:00", 400.0))
+        data.add(ParkingLot("Parking", "Closed", 40, "Algiers", 200.0, 20, R.drawable.parking1, 3.5, "08:00", "22:00", 400.0))
+        data.add(ParkingLot("Parking", "Closed", 40, "Algiers", 200.0, 20, R.drawable.parking1, 3.5, "08:00", "22:00", 400.0))
         return data
     }
 

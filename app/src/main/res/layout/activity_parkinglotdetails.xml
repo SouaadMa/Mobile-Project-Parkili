@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/header_shape"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"/>
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_hamburger_menu" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Parkili"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView12"
+        app:layout_constraintStart_toEndOf="@+id/imageView10"
+        app:layout_constraintTop_toTopOf="@+id/imageView6" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_search" />
+
+    <TextView
+        android:id="@+id/textView_parkinglotname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:text="Parking Jardin d'essai"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_parkinglotlocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="Location : Alger"
+        app:layout_constraintStart_toStartOf="@+id/textView_parkinglotname"
+        app:layout_constraintTop_toBottomOf="@+id/textView_parkinglotname" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_parkinglotlocation"
+        app:srcCompat="@drawable/grey_details_backg" />
+
+    <ImageView
+        android:id="@+id/iv_parkingimage"
+        android:layout_width="230dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="10dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="@+id/imageView13"
+        app:layout_constraintStart_toStartOf="@+id/imageView13"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:srcCompat="@drawable/rounded_parkingimage" />
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView15"
+        app:layout_constraintEnd_toStartOf="@+id/imageView15"
+        app:layout_constraintTop_toTopOf="@+id/imageView15"
+        app:srcCompat="@drawable/ic_half_star" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView16"
+        app:layout_constraintEnd_toStartOf="@+id/imageView16"
+        app:layout_constraintTop_toTopOf="@+id/imageView16"
+        app:srcCompat="@drawable/ic_half_star" />
+
+    <ImageView
+        android:id="@+id/imageView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/iv_parkingimage"
+        app:layout_constraintStart_toStartOf="@+id/iv_parkingimage"
+        app:layout_constraintTop_toBottomOf="@+id/iv_parkingimage"
+        app:srcCompat="@drawable/ic_half_star" />
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView16"
+        app:layout_constraintStart_toEndOf="@+id/imageView16"
+        app:layout_constraintTop_toTopOf="@+id/imageView16"
+        app:srcCompat="@drawable/ic_full_star" />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView17"
+        app:layout_constraintStart_toEndOf="@+id/imageView17"
+        app:layout_constraintTop_toTopOf="@+id/imageView17"
+        app:srcCompat="@drawable/ic_empty_star" />
+
+    <TextView
+        android:id="@+id/textView_statetitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="State :"
+        app:layout_constraintStart_toStartOf="@+id/iv_parkingimage"
+        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
+
+    <TextView
+        android:id="@+id/textView_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="OPEN"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_statetitle"
+        app:layout_constraintStart_toEndOf="@+id/textView_statetitle"
+        app:layout_constraintTop_toTopOf="@+id/textView_statetitle" />
+
+    <TextView
+        android:id="@+id/textView_occupationtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:text="Occupation :"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_state"
+        app:layout_constraintStart_toEndOf="@+id/textView_state"
+        app:layout_constraintTop_toTopOf="@+id/textView_state"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView_occupation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="65%"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_occupationtitle"
+        app:layout_constraintStart_toEndOf="@+id/textView_occupationtitle"
+        app:layout_constraintTop_toTopOf="@+id/textView_occupationtitle" />
+
+    <TextView
+        android:id="@+id/textView_distancetitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Distance :"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/textView_statetitle"
+        app:layout_constraintTop_toBottomOf="@+id/textView_statetitle" />
+
+    <TextView
+        android:id="@+id/textView_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="8.86 km"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_distancetitle"
+        app:layout_constraintStart_toEndOf="@+id/textView_distancetitle"
+        app:layout_constraintTop_toTopOf="@+id/textView_distancetitle" />
+
+    <TextView
+        android:id="@+id/textView_durationtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Durée estimée :"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/textView_occupationtitle"
+        app:layout_constraintTop_toBottomOf="@+id/textView_occupationtitle" />
+
+    <TextView
+        android:id="@+id/textView_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="14 min"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_durationtitle"
+        app:layout_constraintStart_toEndOf="@+id/textView_durationtitle"
+        app:layout_constraintTop_toTopOf="@+id/textView_durationtitle" />
+
+    <TextView
+        android:id="@+id/textView_openingtimetitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Opening time :"
+        app:layout_constraintStart_toStartOf="@+id/textView_distancetitle"
+        app:layout_constraintTop_toBottomOf="@+id/textView_distancetitle" />
+
+    <TextView
+        android:id="@+id/textView_openingtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="08:00"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_openingtimetitle"
+        app:layout_constraintStart_toEndOf="@+id/textView_openingtimetitle"
+        app:layout_constraintTop_toTopOf="@+id/textView_openingtimetitle" />
+
+    <TextView
+        android:id="@+id/textView_closingtimetitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Closing time   :"
+        app:layout_constraintStart_toStartOf="@+id/textView_openingtimetitle"
+        app:layout_constraintTop_toBottomOf="@+id/textView_openingtimetitle" />
+
+    <TextView
+        android:id="@+id/textView_closingtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="22:00"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_closingtimetitle"
+        app:layout_constraintStart_toEndOf="@+id/textView_closingtimetitle"
+        app:layout_constraintTop_toTopOf="@+id/textView_closingtimetitle" />
+
+    <TextView
+        android:id="@+id/textView_unitpricetitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:text="Price / hour :"
+        app:layout_constraintBottom_toTopOf="@+id/button_book"
+        app:layout_constraintStart_toStartOf="@+id/textView_closingtimetitle"
+        app:layout_constraintTop_toBottomOf="@+id/textView_closingtimetitle" />
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="200 DA"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_unitpricetitle"
+        app:layout_constraintStart_toEndOf="@+id/textView_unitpricetitle"
+        app:layout_constraintTop_toTopOf="@+id/textView_unitpricetitle" />
+
+    <Button
+        android:id="@+id/button_book"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="5dp"
+        android:text="Book your place"
+        app:layout_constraintBottom_toTopOf="@+id/button_showmap"
+        app:layout_constraintEnd_toEndOf="@+id/imageView13"
+        app:layout_constraintStart_toStartOf="@+id/imageView13" />
+
+    <Button
+        android:id="@+id/button_showmap"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:text="Show on Map"
+        android:theme="@style/Theme.ProjetTDMParkili.Secondary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/button_book"
+        app:layout_constraintStart_toStartOf="@+id/button_book" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.projettdm_parkili
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,8 @@ import com.example.projettdm_parkili.models.ParkingLot
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeListBinding
+
+    val data = mutableListOf<ParkingLot>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +29,7 @@ class HomeActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.rv_parkings)
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = ParkingLotsList_Adapter(this,loadData())
+        recyclerView.adapter = ParkingLotsList_Adapter(this, loadData(), onListItemClickedListener = {position -> onListItemClick(position)})
 
         binding.textViewMapView.setOnClickListener{
             if(binding.mapViewBackground.visibility == View.INVISIBLE) flipViews()
@@ -39,7 +42,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun loadData(): List<ParkingLot> {
-        val data = mutableListOf<ParkingLot>()
+
         data.add(ParkingLot("Parking", "Closed", 40, "Algiers", 200.0, 20, R.drawable.parking1, 3.5, "08:00", "22:00", 400.0))
         data.add(ParkingLot("Parking", "Closed", 40, "Algiers", 200.0, 20, R.drawable.parking1, 3.5, "08:00", "22:00", 400.0))
         data.add(ParkingLot("Parking", "Closed", 40, "Algiers", 200.0, 20, R.drawable.parking1, 3.5, "08:00", "22:00", 400.0))
@@ -62,6 +65,13 @@ class HomeActivity : AppCompatActivity() {
             backg_mapview.visibility = View.INVISIBLE
             backg_listview.visibility = View.VISIBLE
         }
+    }
+
+    private fun onListItemClick(position: Int) {
+        //Toast.makeText(this, data[position].title, Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, ParkingLotDetailsActivity::class.java)
+        intent.putExtra("parking", data[position])
+        startActivity(intent)
     }
 
 }

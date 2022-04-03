@@ -1,5 +1,7 @@
 package com.example.projettdm_parkili.models
 
+import java.io.Serializable
+
 data class ParkingLot(
 
     val title : String,
@@ -14,4 +16,4 @@ data class ParkingLot(
     var closingTime : String,
     var pricePerHour : Double
 
-)
+): Serializable

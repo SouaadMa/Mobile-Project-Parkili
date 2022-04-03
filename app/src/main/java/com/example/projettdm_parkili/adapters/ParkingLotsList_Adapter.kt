@@ -15,11 +15,12 @@ import com.example.projettdm_parkili.models.ParkingLot
 
 class ParkingLotsList_Adapter (
         val context : Context,
-        var data : List<ParkingLot>
+        var data : List<ParkingLot>,
+        val onListItemClickedListener : (position:Int) -> Unit
     ) : RecyclerView.Adapter<ParkingLotsList_Adapter.ParkingHolder>() {
 
 
-        class ParkingHolder(view: View) : RecyclerView.ViewHolder(view) {
+        class ParkingHolder(view: View, private val onListItemClickedListener: (position: Int) -> Unit) : RecyclerView.ViewHolder(view), View.OnClickListener {
 
             val title = view.findViewById(R.id.tv_parkingtitle) as TextView
             val state = view.findViewById(R.id.tv_parkingstate) as TextView
@@ -30,10 +31,19 @@ class ParkingLotsList_Adapter (
 
             val image = view.findViewById(R.id.iv_parkingimage) as ImageView
 
+            init {
+                view.setOnClickListener(this)
+            }
+
+            override fun onClick(p0: View?) {
+                val position = adapterPosition
+                onListItemClickedListener(position)
+            }
+
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ParkingHolder {
-            return ParkingHolder(LayoutInflater.from(context).inflate(R.layout.parkinglot_item, parent, false))
+            return ParkingHolder(LayoutInflater.from(context).inflate(R.layout.parkinglot_item, parent, false), onListItemClickedListener)
         }
 
         @SuppressLint("ResourceAsColor")

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "989220057603",
+    "project_id": "parkili",
+    "storage_bucket": "parkili.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989220057603:android:c196f82e3746b85e509436",
+        "android_client_info": {
+          "package_name": "com.example.projettdm_parkili"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989220057603-tltedtqm67os4bn1206ikph0hgu6j1ot.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAP_Rv3lpJjXDZN-QRKPw6PHD0HajwzAcs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989220057603-tltedtqm67os4bn1206ikph0hgu6j1ot.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

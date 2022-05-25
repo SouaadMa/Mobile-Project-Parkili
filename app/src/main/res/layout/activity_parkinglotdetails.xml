@@ -92,27 +92,27 @@
         app:srcCompat="@drawable/rounded_parkingimage" />
 
     <ImageView
-        android:id="@+id/imageView14"
+        android:id="@+id/star1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView15"
-        app:layout_constraintEnd_toStartOf="@+id/imageView15"
-        app:layout_constraintTop_toTopOf="@+id/imageView15"
+        app:layout_constraintBottom_toBottomOf="@+id/star2"
+        app:layout_constraintEnd_toStartOf="@+id/star2"
+        app:layout_constraintTop_toTopOf="@+id/star2"
         app:srcCompat="@drawable/ic_half_star" />
 
     <ImageView
-        android:id="@+id/imageView15"
+        android:id="@+id/star2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView16"
-        app:layout_constraintEnd_toStartOf="@+id/imageView16"
-        app:layout_constraintTop_toTopOf="@+id/imageView16"
+        app:layout_constraintBottom_toBottomOf="@+id/star3"
+        app:layout_constraintEnd_toStartOf="@+id/star3"
+        app:layout_constraintTop_toTopOf="@+id/star3"
         app:srcCompat="@drawable/ic_half_star" />
 
     <ImageView
-        android:id="@+id/imageView16"
+        android:id="@+id/star3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -122,23 +122,25 @@
         app:srcCompat="@drawable/ic_half_star" />
 
     <ImageView
-        android:id="@+id/imageView17"
+        android:id="@+id/star4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView16"
-        app:layout_constraintStart_toEndOf="@+id/imageView16"
-        app:layout_constraintTop_toTopOf="@+id/imageView16"
-        app:srcCompat="@drawable/ic_full_star" />
+        app:layout_constraintBottom_toBottomOf="@+id/star3"
+        app:layout_constraintStart_toEndOf="@+id/star3"
+        app:layout_constraintTop_toTopOf="@+id/star3"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_half_star" />
 
     <ImageView
-        android:id="@+id/imageView18"
+        android:id="@+id/star5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView17"
-        app:layout_constraintStart_toEndOf="@+id/imageView17"
-        app:layout_constraintTop_toTopOf="@+id/imageView17"
+        app:layout_constraintBottom_toBottomOf="@+id/star4"
+        app:layout_constraintStart_toEndOf="@+id/star4"
+        app:layout_constraintTop_toTopOf="@+id/star4"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_empty_star" />
 
     <TextView
@@ -148,7 +150,7 @@
         android:layout_marginTop="20dp"
         android:text="State :"
         app:layout_constraintStart_toStartOf="@+id/iv_parkingimage"
-        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
+        app:layout_constraintTop_toBottomOf="@+id/star1" />
 
     <TextView
         android:id="@+id/textView_state"

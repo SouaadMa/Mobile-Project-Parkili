@@ -3,10 +3,15 @@ package com.example.projettdm_parkili
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.work.*
 import com.example.projettdm_parkili.databinding.ActivityParkinglotdetailsBinding
 import com.example.projettdm_parkili.models.ParkingLot
+import com.example.projettdm_parkili.models.Review
+import com.example.projettdm_parkili.services.ReviewSyncService
 
 class ParkingLotDetailsActivity : AppCompatActivity() {
 
@@ -31,6 +36,33 @@ class ParkingLotDetailsActivity : AppCompatActivity() {
 
         binding.buttonShowmap.setOnClickListener{
             goToMap()
+        }
+
+        var star_array = mutableListOf<ImageView>(
+            binding.star1,
+            binding.star2,
+            binding.star3,
+            binding.star4,
+            binding.star5,
+        )
+
+        var i = 1;
+        while (i<=5) {
+            star_array[i].setOnClickListener {
+                val db = AppDatabase.buildDatabase(this)?.getReviewDao()?.addReview(
+                    Review(i, "you are the best")
+                )
+
+                val constraints = Constraints.Builder(). setRequiredNetworkType(NetworkType.CONNECTED). // UNMETERED signifie réseau Wi-Fi
+                build()
+                val req = OneTimeWorkRequest.Builder(ReviewSyncService::class.java)
+                    .setConstraints(constraints).build()
+                val workManager = WorkManager.getInstance(this)
+                workManager.enqueueUniqueWork("sync", ExistingWorkPolicy.REPLACE, req)
+                Log.d("sync", "setOnClickListener $i")
+
+            }
+            i++
         }
 
 

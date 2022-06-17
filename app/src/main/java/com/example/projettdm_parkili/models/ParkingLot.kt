@@ -2,7 +2,7 @@ package com.example.projettdm_parkili.models
 
 import java.io.Serializable
 
-data class ParkingLot(
+data class ParkingLot (
 
     val title : String,
     val state : String,

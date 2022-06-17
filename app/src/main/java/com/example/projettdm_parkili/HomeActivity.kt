@@ -3,6 +3,7 @@ package com.example.projettdm_parkili
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -68,7 +69,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun onListItemClick(position: Int) {
-        //Toast.makeText(this, data[position].title, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, data[position].title, Toast.LENGTH_SHORT).show()
         val intent = Intent(this, ParkingLotDetailsActivity::class.java)
         intent.putExtra("parking", data[position])
         startActivity(intent)

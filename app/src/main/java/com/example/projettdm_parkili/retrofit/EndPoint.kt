@@ -6,10 +6,7 @@ import com.example.projettdm_parkili.url
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface EndPoint {
 
@@ -21,6 +18,11 @@ interface EndPoint {
 
     @POST("users/add")
     suspend fun addNewUser(
+        @Body user: User
+    ) : Response<User>
+
+    @POST("users/login")
+    suspend fun login(
         @Body user: User
     ) : Response<User>
 

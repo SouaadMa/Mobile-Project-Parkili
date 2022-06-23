@@ -6,6 +6,8 @@
 
     <fragment android:id="@+id/fragment1" tools:layout="@layout/fragment_help" android:label="First" android:name="com.example.projettdm_parkili.HelpFragment"/>
 
+    <fragment android:id="@+id/fragment2" tools:layout="@layout/fragment_nearest_parkings" android:label="Nearest" android:name="com.example.projettdm_parkili.NearestParkingsFragment"/>
+
 
 
 </navigation>

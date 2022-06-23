@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity() {
     }
     fun openHomeActivity(){
 
-        var intent = Intent(this, HomeActivity::class.java )
+        var intent = Intent(this, NavHomeActivity::class.java )
         startActivity(intent)
 
     }

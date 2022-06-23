@@ -13,4 +13,24 @@
         app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="32dp"
         android:layout_marginTop="16dp" android:id="@+id/imageView"/>
 
+    <TextView
+        android:id="@+id/tv_logged"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logged in as : "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="fullname"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv_logged"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.757"
+        app:layout_constraintStart_toEndOf="@+id/tv_logged" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,6 +20,8 @@ class NavHomeActivity : AppCompatActivity() {
         navController = navHostFragment.navController
         NavigationUI.setupActionBarWithNavController(this,navController,binding.drawerLayout)
         NavigationUI.setupWithNavController(binding.navView,navController)
+
+
     }
 
 

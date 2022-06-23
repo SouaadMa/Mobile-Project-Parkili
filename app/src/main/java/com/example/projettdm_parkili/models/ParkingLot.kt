@@ -4,16 +4,14 @@ import java.io.Serializable
 
 data class ParkingLot (
 
-    val title : String,
-    val state : String,
-    var occupation : Int,
-    val location : String,
-    val distance : Double, //Shouldn't be here
-    val duration : Int, //Shouldn't be here either
-    val image : Int,
-    var note : Double,
-    var openingTime : String,
-    var closingTime : String,
-    var pricePerHour : Double
+    val parking_id : Int,
+    val name : String,
+    val commune : String,
+    val positionLat : Double,
+    val positionLng : Double,
+    val nb_occupiedSpots : Int,
+    val nb_totalSpots : Int,
+    val pricePerHour: Double,
+    val image : Int
 
 ): Serializable

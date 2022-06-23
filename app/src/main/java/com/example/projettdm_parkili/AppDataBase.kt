@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.projettdm_parkili.dao.ParkingDAO
 import com.example.projettdm_parkili.dao.ReviewDAO
 import com.example.projettdm_parkili.models.Review
 
@@ -11,6 +12,7 @@ import com.example.projettdm_parkili.models.Review
 abstract class AppDatabase: RoomDatabase() {
 
     abstract fun getReviewDao(): ReviewDAO
+    abstract fun getParkingDao(): ParkingDAO
 
     companion object {
         @Volatile

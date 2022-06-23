@@ -85,10 +85,10 @@ class ParkingLotDetailsActivity : AppCompatActivity() {
     }
 
     fun fillTextViews() {
-        binding.textViewParkinglotname.text = parking.title
-        binding.textViewParkinglotlocation.text = parking.location
-        binding.textViewState.text = parking.state
-
+        binding.textViewParkinglotname.text = parking.name
+        binding.textViewParkinglotlocation.text = parking.positionLat.toString()
+        binding.textViewState.text = parking.commune
+/*
         binding.textViewDistance.text = parking.distance.toString()
         binding.textViewDuration.text = parking.duration.toString()
 
@@ -96,13 +96,13 @@ class ParkingLotDetailsActivity : AppCompatActivity() {
             binding.textViewState.setTextColor(ContextCompat.getColor(this, R.color.badnews_red))
         }else{
             binding.textViewState.setTextColor(ContextCompat.getColor(this, R.color.goodnews_green))
-        }
+        }*/
     }
 
     fun goToMap() {
         val intent = Intent(
             Intent.ACTION_VIEW,
-            Uri.parse("http://maps.google.com/maps?daddr=${parking.location}")
+            Uri.parse("http://maps.google.com/maps?daddr=${parking.commune}")
         )
         startActivity(intent)
     }

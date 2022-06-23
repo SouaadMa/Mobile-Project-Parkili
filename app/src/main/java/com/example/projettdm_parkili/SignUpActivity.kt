@@ -64,7 +64,6 @@ class SignUpActivity : AppCompatActivity() {
     suspend fun signUp() {
 
 
-
         //check that all is good before inserting
         if (true) {
 

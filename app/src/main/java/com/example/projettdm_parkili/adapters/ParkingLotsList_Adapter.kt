@@ -57,7 +57,9 @@ class ParkingLotsList_Adapter (
         @SuppressLint("ResourceAsColor")
         override fun onBindViewHolder(holder: ParkingHolder, position: Int) {
             holder.apply {
-                title.text = data[position].name
+                //title.text = data[position].name
+                val pref = context.getSharedPreferences("Parkili_sharedpref",Context.MODE_PRIVATE)
+                title.text = pref.getString("user_email", "none")
 
                 var openornot = /*getOpenState(data[position])*/ "Open"
                 state.text = openornot

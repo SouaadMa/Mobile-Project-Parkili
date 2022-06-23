@@ -1,10 +1,12 @@
 package com.example.projettdm_parkili
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.core.content.edit
 import com.example.projettdm_parkili.databinding.ActivityMainBinding
 import com.example.projettdm_parkili.models.User
 import com.example.projettdm_parkili.retrofit.EndPoint
@@ -59,6 +61,11 @@ class MainActivity : AppCompatActivity() {
                     val resp = signIn()
                     withContext(Dispatchers.Main) {
                         if (resp.isSuccessful) {
+                            val pref = getSharedPreferences("Parkili_sharedpref", Context.MODE_PRIVATE)
+                            pref.edit {
+                                putBoolean("connected" ,true)
+                                putString("user_email", resp.body()?.email)
+                            }
                             openHomeActivity()
                         } else {
                             Log.d("io", "resp is not successful")

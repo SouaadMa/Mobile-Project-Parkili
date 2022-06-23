@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <navigation app:startDestination="@id/fragment1"
+    android:id="@+id/graph1" xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <fragment android:id="@+id/fragment1" tools:layout="@layout/fragment_help" android:label="First" android:name="com.example.projettdm_parkili.HelpFragment"/>
+
+
+
+</navigation>

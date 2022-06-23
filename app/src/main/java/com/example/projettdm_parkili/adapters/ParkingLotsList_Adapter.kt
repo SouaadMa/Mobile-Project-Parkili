@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.projettdm_parkili.R
 import com.example.projettdm_parkili.models.OpenSchedule
 import com.example.projettdm_parkili.models.ParkingLot
+import com.example.projettdm_parkili.utils.getUserName
 import java.time.LocalDateTime
 import java.time.chrono.ChronoLocalDateTime
 import java.time.temporal.TemporalAccessor
@@ -58,8 +59,7 @@ class ParkingLotsList_Adapter (
         override fun onBindViewHolder(holder: ParkingHolder, position: Int) {
             holder.apply {
                 //title.text = data[position].name
-                val pref = context.getSharedPreferences("Parkili_sharedpref",Context.MODE_PRIVATE)
-                title.text = pref.getString("user_email", "none")
+                title.text = getUserName(context)
 
                 var openornot = /*getOpenState(data[position])*/ "Open"
                 state.text = openornot

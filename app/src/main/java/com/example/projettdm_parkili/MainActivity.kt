@@ -10,12 +10,12 @@ import androidx.core.content.edit
 import com.example.projettdm_parkili.databinding.ActivityMainBinding
 import com.example.projettdm_parkili.models.User
 import com.example.projettdm_parkili.retrofit.EndPoint
+import com.example.projettdm_parkili.utils.isLogin
+import com.example.projettdm_parkili.utils.saveUserID
+import com.example.projettdm_parkili.utils.saveUserName
 import com.example.projettdm_parkili.validator.EmailValidator
 import com.example.projettdm_parkili.validator.EmptyValidator
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import retrofit2.Response
 import kotlin.math.log
 
@@ -25,6 +25,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if(isLogin(this)) {
+            openHomeActivity()
+        }
+
         setContentView(R.layout.activity_main)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -57,23 +62,7 @@ class MainActivity : AppCompatActivity() {
 
             if(errormsg != null) Toast.makeText(this, errormsg, Toast.LENGTH_SHORT).show()
             else {
-                GlobalScope.launch {
-                    val resp = signIn()
-                    withContext(Dispatchers.Main) {
-                        if (resp.isSuccessful) {
-                            val pref = getSharedPreferences("Parkili_sharedpref", Context.MODE_PRIVATE)
-                            pref.edit {
-                                putBoolean("connected" ,true)
-                                putString("user_email", resp.body()?.email)
-                            }
-                            openHomeActivity()
-                        } else {
-                            Log.d("io", "resp is not successful")
-                            errormsg = "Could not login"
-                            showErrorMsg(errormsg!!)
-                        }
-                    }
-                }
+                callSignIn(this)
             }
         }
 
@@ -84,6 +73,23 @@ class MainActivity : AppCompatActivity() {
         var intent = Intent(this, SignUpActivity::class.java )
         startActivity(intent)
 
+    }
+
+    fun callSignIn(ctx : Context) {
+        CoroutineScope(Dispatchers.IO).launch  {
+            val resp = signIn()
+            withContext(Dispatchers.Main) {
+                if (resp.isSuccessful && resp.body() != null) {
+                    saveUserName(ctx, resp.body()?.fullname!!)
+                    saveUserID(ctx, resp.body()?.userId!!)
+                    openHomeActivity()
+                } else {
+                    Log.d("io", "resp is not successful")
+                    val errormsg = "Could not login"
+                    showErrorMsg(errormsg!!)
+                }
+            }
+        }
     }
 
     suspend fun signIn() : Response<User> {

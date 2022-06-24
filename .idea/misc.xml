@@ -24,8 +24,11 @@
         <entry key="..\:/Users/windows/Documents/2CSSIL2/TDM/ProjetTDM/Mobile-Project-Parkili/app/src/main/res/layout/activity_signup.xml" value="0.2033514492753623" />
         <entry key="..\:/Users/windows/Documents/2CSSIL2/TDM/ProjetTDM/Mobile-Project-Parkili/app/src/main/res/layout/drawer_header.xml" value="0.1" />
         <entry key="..\:/Users/windows/Documents/2CSSIL2/TDM/ProjetTDM/Mobile-Project-Parkili/app/src/main/res/layout/fragment_help.xml" value="0.2033514492753623" />
-        <entry key="..\:/Users/windows/Documents/2CSSIL2/TDM/ProjetTDM/Mobile-Project-Parkili/app/src/main/res/layout/fragment_nearest_parkings.xml" value="0.25" />
+        <entry key="..\:/Users/windows/Documents/2CSSIL2/TDM/ProjetTDM/Mobile-Project-Parkili/app/src/main/res/layout/fragment_nearest_parkings.xml" value="0.1" />
+        <entry key="..\:/Users/windows/Documents/2CSSIL2/TDM/ProjetTDM/Mobile-Project-Parkili/app/src/main/res/layout/fragment_user_reservations.xml" value="0.18478260869565216" />
         <entry key="..\:/Users/windows/Documents/2CSSIL2/TDM/ProjetTDM/Mobile-Project-Parkili/app/src/main/res/layout/notification.xml" value="0.22" />
+        <entry key="..\:/Users/windows/Documents/2CSSIL2/TDM/ProjetTDM/Mobile-Project-Parkili/app/src/main/res/layout/parkinglot_item.xml" value="0.18478260869565216" />
+        <entry key="..\:/Users/windows/Documents/2CSSIL2/TDM/ProjetTDM/Mobile-Project-Parkili/app/src/main/res/layout/reservation_item.xml" value="0.33" />
         <entry key="..\:/Users/windows/Documents/2CSSIL2/TDM/ProjetTDM/Mobile-Project-Parkili/app/src/main/res/menu/bottom_nav_menu.xml" value="0.33" />
         <entry key="..\:/Users/windows/Documents/2CSSIL2/TDM/ProjetTDM/Mobile-Project-Parkili/app/src/main/res/menu/drawer_menu.xml" value="0.20416666666666666" />
       </map>

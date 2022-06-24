@@ -1,9 +1,6 @@
 package com.example.projettdm_parkili.retrofit
 
-import com.example.projettdm_parkili.models.OpenSchedule
-import com.example.projettdm_parkili.models.ParkingLot
-import com.example.projettdm_parkili.models.Review
-import com.example.projettdm_parkili.models.User
+import com.example.projettdm_parkili.models.*
 import com.example.projettdm_parkili.url
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -35,6 +32,11 @@ interface EndPoint {
     @GET("schedules/")
     suspend fun getSchedules(
     ) : Response<List<OpenSchedule>>
+
+    @GET("reservations/{userId}")
+    suspend fun getUserReservations(
+        @Path("userId") userId : Int
+    ) : Response<List<Reservation>>
 
     //@GET("users/{username}/{pwd}")
     //suspend fun getUser(@Path("username") username: String?, @Path("pwd") pwd: String?)

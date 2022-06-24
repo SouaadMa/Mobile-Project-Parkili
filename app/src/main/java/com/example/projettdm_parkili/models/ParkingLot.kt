@@ -12,6 +12,6 @@ data class ParkingLot (
     val nb_occupiedSpots : Int,
     val nb_totalSpots : Int,
     val pricePerHour: Double,
-    val image : Int
+    val image : String
 
 ): Serializable

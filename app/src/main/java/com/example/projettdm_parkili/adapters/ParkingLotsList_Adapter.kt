@@ -12,9 +12,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.projettdm_parkili.R
 import com.example.projettdm_parkili.models.OpenSchedule
 import com.example.projettdm_parkili.models.ParkingLot
+import com.example.projettdm_parkili.url
 import com.example.projettdm_parkili.utils.getUserName
 import java.time.LocalDateTime
 import java.time.chrono.ChronoLocalDateTime
@@ -72,7 +74,8 @@ class ParkingLotsList_Adapter (
                 /*distance.text = data[position].distance.toString()
                 duration.text = data[position].duration.toString()*/
 
-                image.setImageResource(data[position].image)
+                Glide.with(context).load(url + data[position].image).into(image)
+
             }
         }
 

@@ -37,7 +37,7 @@ class HomeActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
 
-        loadData(recyclerView, this)
+        //loadData(recyclerView, this)
 
         binding.textViewMapView.setOnClickListener{
             if(binding.mapViewBackground.visibility == View.INVISIBLE) flipViews()
@@ -81,8 +81,6 @@ class HomeActivity : AppCompatActivity() {
                     recyclerView.adapter =
                         data?.let {
                             ParkingLotsList_Adapter(ctx,
-                                it,
-                                schedules,
                                 onListItemClickedListener = { position -> onListItemClick(position) })
                         }
                 }

@@ -115,6 +115,14 @@ dependencies {
     // GLide
     implementation 'com.github.bumptech.glide:glide:4.13.0'
 
+    // Apache commons io (distance and time with TomTom)
+    implementation 'commons-io:commons-io:2.6'
+
+    //Géolocalisation
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
+    // EasyPersmission For developers using AndroidX in their applications
+    implementation 'com.vmadalin:easypermissions-ktx:1.0.0'
+
 }
 
 apply plugin: 'com.android.application'

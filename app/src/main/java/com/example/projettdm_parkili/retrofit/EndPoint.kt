@@ -29,6 +29,11 @@ interface EndPoint {
     suspend fun getParkings(
     ) : Response<List<ParkingLot>>
 
+    @GET("parkings/nearest/{userId}")
+    suspend fun getNearestParkings(
+        @Path("userId") userId : Int
+    ) : Response<List<ParkingLot>>
+
     @GET("schedules/")
     suspend fun getSchedules(
     ) : Response<List<OpenSchedule>>

@@ -12,7 +12,7 @@
     android:padding="10dp">
 
 
-    <ImageView
+    <!--ImageView
         android:id="@+id/iv_parkingimage"
         android:layout_width="145dp"
         android:layout_height="125dp"
@@ -22,7 +22,20 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/rounded_parkingimage" />
+        app:srcCompat="@drawable/rounded_parkingimage" /-->
+
+    <ImageView
+        android:id="@+id/idIVQrcode"
+        android:layout_width="145dp"
+        android:layout_height="125dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="code_qr" />
 
     <TextView
         android:id="@+id/tv_parkingtitle"
@@ -31,9 +44,9 @@
         android:layout_marginStart="12dp"
         android:text="Parking Title"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_parkingimage"
-        app:layout_constraintStart_toEndOf="@+id/iv_parkingimage"
-        app:layout_constraintTop_toTopOf="@+id/iv_parkingimage"
+        app:layout_constraintBottom_toBottomOf="@+id/idIVQrcode"
+        app:layout_constraintStart_toEndOf="@+id/idIVQrcode"
+        app:layout_constraintTop_toTopOf="@+id/idIVQrcode"
         app:layout_constraintVertical_bias="0.354" />
 
     <TextView
@@ -43,8 +56,8 @@
         android:layout_marginStart="12dp"
         android:text="Price"
         android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_parkingimage"
-        app:layout_constraintStart_toEndOf="@+id/iv_parkingimage"
+        app:layout_constraintBottom_toBottomOf="@+id/idIVQrcode"
+        app:layout_constraintStart_toEndOf="@+id/idIVQrcode"
         app:layout_constraintTop_toBottomOf="@+id/tv_parkingtitle"
         app:layout_constraintVertical_bias="0.857" />
 
@@ -56,8 +69,8 @@
         android:layout_marginTop="4dp"
         android:text="Date"
         android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/iv_parkingimage"
-        app:layout_constraintTop_toTopOf="@+id/iv_parkingimage" />
+        app:layout_constraintStart_toEndOf="@+id/idIVQrcode"
+        app:layout_constraintTop_toTopOf="@+id/idIVQrcode" />
 
     <TextView
         android:id="@+id/tv_entrytime"

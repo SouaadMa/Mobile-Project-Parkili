@@ -123,6 +123,10 @@ dependencies {
     // EasyPersmission For developers using AndroidX in their applications
     implementation 'com.vmadalin:easypermissions-ktx:1.0.0'
 
+    //Code QR
+    implementation 'com.google.zxing:core:3.3.2'
+    implementation 'com.google.zxing:javase:3.3.2'
+
 }
 
 apply plugin: 'com.android.application'

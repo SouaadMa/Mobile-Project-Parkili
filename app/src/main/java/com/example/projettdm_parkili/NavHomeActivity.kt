@@ -45,7 +45,7 @@ class NavHomeActivity : AppCompatActivity() {
         val headerView : View = navigationView.getHeaderView(0)
         val navUsername : TextView = headerView.findViewById(R.id.tv_username)
         navUsername.text = getUserName(this)
-/*
+
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
             if (!task.isSuccessful) {
                 Log.w(TAG, "Fetching FCM registration token failed", task.exception)
@@ -60,7 +60,7 @@ class NavHomeActivity : AppCompatActivity() {
             Log.d("firebasetoken", msg)
             //Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
         })
-*/
+
 
     }
 

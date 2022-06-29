@@ -55,6 +55,51 @@ class ParkingViewModel : ViewModel() {
 
     }
 
+    fun searchByName(name : String) {
+        CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
+            val response = EndPoint.createInstance().getParkingsByName(name)
+            withContext(Dispatchers.Main) {
+                if(response.isSuccessful && response.body() != null) {
+                    loading.value = false
+                    data.postValue(response.body())
+                }
+                else {
+                    onError(response.message())
+                }
+            }
+        }
+    }
+
+    fun searchByLocation(location : String) {
+        CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
+            val response = EndPoint.createInstance().getParkingsByLocation(location)
+            withContext(Dispatchers.Main) {
+                if(response.isSuccessful && response.body() != null) {
+                    loading.value = false
+                    data.postValue(response.body())
+                }
+                else {
+                    onError(response.message())
+                }
+            }
+        }
+    }
+
+    fun searchByLocationName(location : String, name : String) {
+        CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
+            val response = EndPoint.createInstance().getParkingsByLocationName(location, name)
+            withContext(Dispatchers.Main) {
+                if(response.isSuccessful && response.body() != null) {
+                    loading.value = false
+                    data.postValue(response.body())
+                }
+                else {
+                    onError(response.message())
+                }
+            }
+        }
+    }
+
     private fun onError(message: String) {
         errorMessage.value = message
         loading.value = false

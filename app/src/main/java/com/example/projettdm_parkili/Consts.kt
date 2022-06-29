@@ -1,3 +1,3 @@
 package com.example.projettdm_parkili
 
-const val url = "https://87b4-41-220-153-30.ngrok.io/"
+const val url = "https://484c-129-45-28-88.ngrok.io/"

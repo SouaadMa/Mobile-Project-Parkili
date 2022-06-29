@@ -49,6 +49,22 @@ interface EndPoint {
         @Body reservation : Reservation
     ) : Response<Reservation>
 
+    @GET("parkings/{name}")
+    suspend fun getParkingsByName(
+        @Path("name") name : String
+    ): Response<List<ParkingLot>>
+
+    @GET("parkings/{location}")
+    suspend fun getParkingsByLocation(
+        @Path("location") location : String
+    ): Response<List<ParkingLot>>
+
+    @GET("parkings/{location}/{name}")
+    suspend fun getParkingsByLocationName(
+        @Path("location") location : String,
+        @Path("name") name : String
+    ): Response<List<ParkingLot>>
+
     //@GET("users/{username}/{pwd}")
     //suspend fun getUser(@Path("username") username: String?, @Path("pwd") pwd: String?)
 

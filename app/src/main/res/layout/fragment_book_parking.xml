@@ -64,7 +64,7 @@
         app:srcCompat="@drawable/rounded_parkingimage" />
 
     <TextView
-        android:id="@+id/textView_fromtitle"
+        android:id="@+id/textView_datetitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -73,9 +73,39 @@
         app:layout_constraintStart_toStartOf="@+id/imageView13"
         app:layout_constraintTop_toBottomOf="@+id/iv_parkingimage" />
 
+    <DatePicker
+        android:id="@+id/datePicker_startdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:calendarViewShown="false"
+        android:visibility="invisible"
+        android:datePickerMode="spinner"
+        android:background="@color/white"
+        android:translationZ="90dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/editTextReservationStartDate"
-        android:layout_width="0dp"
+        android:layout_width="140dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="40dp"
+        android:background="@drawable/custom_input"
+        android:drawablePadding="12dp"
+        android:elevation="5dp"
+        android:ems="10"
+        android:fontFamily="@font/montserrat_regular"
+        android:hint="Entry date"
+        android:inputType="datetime"
+        android:padding="5dp"
+        app:layout_constraintStart_toStartOf="@+id/imageView13"
+        app:layout_constraintTop_toBottomOf="@+id/textView_datetitle" />
+
+    <EditText
+        android:id="@+id/editTextReservationStartTime"
+        android:layout_width="140dp"
         android:layout_height="48dp"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
@@ -84,13 +114,12 @@
         android:elevation="5dp"
         android:ems="10"
         android:fontFamily="@font/montserrat_regular"
-        android:hint="Start date"
+        android:hint="Entry time"
         android:inputType="datetime"
         android:padding="5dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextReservationStartDate"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/imageView13"
-        app:layout_constraintTop_toBottomOf="@+id/textView_fromtitle"
-         />
+        app:layout_constraintStart_toEndOf="@+id/editTextReservationStartDate" />
 
     <TextView
         android:id="@+id/textView_untiltitle"
@@ -98,15 +127,26 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Until *"
-        app:layout_constraintStart_toStartOf="@+id/textView_fromtitle"
+        app:layout_constraintStart_toStartOf="@+id/textView_datetitle"
         app:layout_constraintTop_toBottomOf="@+id/editTextReservationStartDate" />
+
+    <DatePicker
+        android:id="@+id/datePicker_enddate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:calendarViewShown="false"
+        android:visibility="invisible"
+        android:datePickerMode="spinner"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextReservationEndDate"
-        android:layout_width="0dp"
+        android:layout_width="140dp"
         android:layout_height="48dp"
         android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
         android:background="@drawable/custom_input"
         android:drawablePadding="12dp"
         android:elevation="5dp"
@@ -115,9 +155,26 @@
         android:hint="End date"
         android:inputType="datetime"
         android:padding="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/imageView13"
         app:layout_constraintTop_toBottomOf="@+id/textView_untiltitle" />
+
+    <EditText
+        android:id="@+id/editTextReservationEndTime"
+        android:layout_width="140dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/custom_input"
+        android:drawablePadding="12dp"
+        android:elevation="5dp"
+        android:ems="10"
+        android:fontFamily="@font/montserrat_regular"
+        android:hint="Entry time"
+        android:inputType="datetime"
+        android:padding="5dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextReservationEndDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTextReservationEndDate" />
 
     <TextView
         android:id="@+id/textView_estimatedpricetitle"
@@ -159,7 +216,7 @@
         android:ems="10"
         android:fontFamily="@font/montserrat_regular"
         android:hint="End date"
-        android:inputType="datetime"
+        android:inputType="text"
         android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/imageView13"

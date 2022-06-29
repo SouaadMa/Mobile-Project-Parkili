@@ -116,7 +116,7 @@
         app:srcCompat="@drawable/ic_empty_star" />
 
     <TextView
-        android:id="@+id/textView_fromtitle"
+        android:id="@+id/textView_datetitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -130,9 +130,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:text="OPEN"
-        app:layout_constraintBottom_toBottomOf="@+id/textView_fromtitle"
-        app:layout_constraintStart_toEndOf="@+id/textView_fromtitle"
-        app:layout_constraintTop_toTopOf="@+id/textView_fromtitle" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView_datetitle"
+        app:layout_constraintStart_toEndOf="@+id/textView_datetitle"
+        app:layout_constraintTop_toTopOf="@+id/textView_datetitle" />
 
     <TextView
         android:id="@+id/textView_occupationtitle"
@@ -162,8 +162,8 @@
         android:layout_marginTop="15dp"
         android:text="Distance :"
         android:textSize="10sp"
-        app:layout_constraintStart_toStartOf="@+id/textView_fromtitle"
-        app:layout_constraintTop_toBottomOf="@+id/textView_fromtitle" />
+        app:layout_constraintStart_toStartOf="@+id/textView_datetitle"
+        app:layout_constraintTop_toBottomOf="@+id/textView_datetitle" />
 
     <TextView
         android:id="@+id/textView_distance"

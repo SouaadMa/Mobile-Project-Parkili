@@ -1,8 +1,10 @@
 package com.example.projettdm_parkili.models
 
+import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.io.Serializable
 
+@Entity(tableName = "reservations")
 data class Reservation(
 
     @PrimaryKey(autoGenerate = true)
@@ -15,8 +17,7 @@ data class Reservation(
     val date : String? = null,
     val entrytime : String,
     val exittime : String,
-    val spotnum : Int = 0,
-    val rating : Int = 0
+    val spotnum : Int = 0
 
 
 ) : Serializable

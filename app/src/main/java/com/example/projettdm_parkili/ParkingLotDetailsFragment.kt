@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.work.*
+import com.bumptech.glide.Glide
 import com.example.projettdm_parkili.databinding.FragmentParkingLotDetailsBinding
 import com.example.projettdm_parkili.models.ParkingLot
 import com.example.projettdm_parkili.models.Review
@@ -97,6 +98,13 @@ class ParkingLotDetailsFragment : Fragment() {
     fun fillTextViews() {
         binding.textViewParkinglotname.text = data?.name
         binding.textViewParkinglotlocation.text = data?.commune
+
+        binding.textViewUnitPrice.text = data?.priceperhour.toString()
+
+        binding.textViewOccupation.text = (data?.nb_occupiedSpots!!/(data?.nb_totalSpots!!)).toString() + "%"
+
+        Glide.with(requireActivity()).load(url + data?.image).into(binding.ivParkingimage)
+
         //binding.textViewState.text =
         //rating
 /*

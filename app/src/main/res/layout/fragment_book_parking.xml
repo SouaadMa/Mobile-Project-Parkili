@@ -191,7 +191,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:text="20 DA"
+        android:text=".. DA"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView_estimatedpricetitle"
         app:layout_constraintStart_toEndOf="@+id/textView_estimatedpricetitle" />
 
@@ -215,7 +215,7 @@
         android:elevation="5dp"
         android:ems="10"
         android:fontFamily="@font/montserrat_regular"
-        android:hint="End date"
+        android:hint="Ex : CIB"
         android:inputType="text"
         android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"

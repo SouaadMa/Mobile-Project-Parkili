@@ -246,7 +246,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView_closingtimetitle" />
 
     <TextView
-        android:id="@+id/textView26"
+        android:id="@+id/textViewUnitPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"

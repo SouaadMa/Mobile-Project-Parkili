@@ -5,16 +5,14 @@ import android.app.TimePickerDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.DatePicker
 import android.widget.TimePicker
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.bumptech.glide.Glide
 import com.example.projettdm_parkili.databinding.FragmentBookParkingBinding
 import com.example.projettdm_parkili.models.ParkingLot
 import com.example.projettdm_parkili.models.Reservation
@@ -27,8 +25,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Response
+import java.text.DateFormat
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
-import javax.xml.datatype.DatatypeConstants.MONTHS
 
 
 class BookParkingFragment : Fragment() {
@@ -67,7 +69,9 @@ class BookParkingFragment : Fragment() {
         binding.editTextReservationStartDate.setShowSoftInputOnFocus(false)
         binding.editTextReservationStartDate.setOnClickListener {
             val dpd = DatePickerDialog(requireActivity(), { view, year, monthOfYear, dayOfMonth ->
-                binding.editTextReservationStartDate.hint = "" + dayOfMonth + " " + (monthOfYear.toInt()+1).toString() + ", " + year
+                var padding_month = if (monthOfYear+1 < 10)  "0" else ""
+                var padding_daymonth = if (dayOfMonth < 10)  "0" else ""
+                binding.editTextReservationStartDate.hint = year.toString() + "-" + padding_month + (monthOfYear+1).toString() + "-" + padding_daymonth + dayOfMonth.toString()
             }, year, month, day)
 
             dpd.show()
@@ -76,7 +80,9 @@ class BookParkingFragment : Fragment() {
         binding.editTextReservationEndDate.setShowSoftInputOnFocus(false)
         binding.editTextReservationEndDate.setOnClickListener {
             val dpd = DatePickerDialog(requireActivity(), { view, year, monthOfYear, dayOfMonth ->
-                binding.editTextReservationEndDate.hint = "" + dayOfMonth + " " + monthOfYear+1 + ", " + year
+                var padding_month = if (monthOfYear+1 < 10)  "0" else ""
+                var padding_daymonth = if (dayOfMonth < 10)  "0" else ""
+                binding.editTextReservationEndDate.hint = year.toString() + "-" + padding_month + (monthOfYear+1).toString() + "-" + padding_daymonth + dayOfMonth.toString()
             }, year, month, day)
             dpd.show()
         }
@@ -88,7 +94,7 @@ class BookParkingFragment : Fragment() {
                 timePickerDialogListener_entrytime,
                 12,
                 10,
-                false
+                true
             )
             timePicker.show()
         }
@@ -100,7 +106,7 @@ class BookParkingFragment : Fragment() {
                 timePickerDialogListener_exittime,
                 12,
                 10,
-                false
+                true
             )
             timePicker.show()
         }
@@ -119,21 +125,19 @@ class BookParkingFragment : Fragment() {
 
             binding.buttonConfirmbook.setOnClickListener {
 
-                val startdate = binding.editTextReservationStartDate.text.toString()
-                val startdateEmptyValidation = EmptyValidator(startdate).validate()
-                val enddate = binding.editTextReservationEndDate.text.toString()
-                val enddateEmptyValidation = EmptyValidator(enddate).validate()
 
                 var errormsg =
-                    if (!startdateEmptyValidation.isSuccess)
-                        startdateEmptyValidation.message
-                    else if (!enddateEmptyValidation.isSuccess)
-                        enddateEmptyValidation.message
+                    if (binding.editTextReservationStartDate.hint.equals("Entry Date"))
+                        "Entry date required but empty"
+                    else if (binding.editTextReservationStartTime.hint.equals("Entry Time"))
+                        "Entry time required but empty"
+                    else if (binding.editTextReservationEndDate.hint.equals("Exit Date"))
+                        "Exit date required but empty"
                     else null
 
                 if(errormsg != null) Toast.makeText(requireActivity(), errormsg, Toast.LENGTH_SHORT).show()
                 else {
-                    price = data?.pricePerHour!! * 2
+
                     CoroutineScope(Dispatchers.IO).launch {
                         var response = bookParking()
                         withContext(Dispatchers.Main) {
@@ -163,37 +167,23 @@ class BookParkingFragment : Fragment() {
             override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
 
                 val formattedTime: String = when {
-                    hourOfDay == 0 -> {
+                    hourOfDay < 10 -> {
                         if (minute < 10) {
-                            "${hourOfDay + 12}:0${minute} am"
+                            "0${hourOfDay}:0${minute}"
                         } else {
-                            "${hourOfDay + 12}:${minute} am"
-                        }
-                    }
-                    hourOfDay > 12 -> {
-                        if (minute < 10) {
-                            "${hourOfDay - 12}:0${minute} pm"
-                        } else {
-                            "${hourOfDay - 12}:${minute} pm"
-                        }
-                    }
-                    hourOfDay == 12 -> {
-                        if (minute < 10) {
-                            "${hourOfDay}:0${minute} pm"
-                        } else {
-                            "${hourOfDay}:${minute} pm"
+                            "0${hourOfDay}:${minute}"
                         }
                     }
                     else -> {
                         if (minute < 10) {
-                            "${hourOfDay}:${minute} am"
+                            "${hourOfDay}:0${minute}"
                         } else {
-                            "${hourOfDay}:${minute} am"
+                            "${hourOfDay}:${minute}"
                         }
                     }
                 }
 
-                binding.editTextReservationStartDate.hint = formattedTime
+                binding.editTextReservationStartTime.hint = formattedTime
             }
         }
 
@@ -201,40 +191,24 @@ class BookParkingFragment : Fragment() {
         object : TimePickerDialog.OnTimeSetListener {
             override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
 
-                // logic to properly handle
-                // the picked timings by user
                 val formattedTime: String = when {
-                    hourOfDay == 0 -> {
+                    hourOfDay < 10 -> {
                         if (minute < 10) {
-                            "${hourOfDay + 12}:0${minute} am"
+                            "0${hourOfDay}:0${minute}"
                         } else {
-                            "${hourOfDay + 12}:${minute} am"
-                        }
-                    }
-                    hourOfDay > 12 -> {
-                        if (minute < 10) {
-                            "${hourOfDay - 12}:0${minute} pm"
-                        } else {
-                            "${hourOfDay - 12}:${minute} pm"
-                        }
-                    }
-                    hourOfDay == 12 -> {
-                        if (minute < 10) {
-                            "${hourOfDay}:0${minute} pm"
-                        } else {
-                            "${hourOfDay}:${minute} pm"
+                            "0${hourOfDay}:${minute}"
                         }
                     }
                     else -> {
                         if (minute < 10) {
-                            "${hourOfDay}:${minute} am"
+                            "${hourOfDay}:0${minute}"
                         } else {
-                            "${hourOfDay}:${minute} am"
+                            "${hourOfDay}:${minute}"
                         }
                     }
                 }
 
-                binding.editTextReservationEndDate.hint = formattedTime
+                binding.editTextReservationEndTime.hint = formattedTime
             }
         }
 
@@ -242,6 +216,15 @@ class BookParkingFragment : Fragment() {
         binding.textViewParkinglotname.text = data?.name
         binding.textViewParkinglotlocation.text = data?.commune
 
+        Glide.with(requireActivity()).load(url + data?.image).into(binding.ivParkingimage)
+
+/*
+        val today = Date()
+        var padding_month = if (today.month < 10)  "0" else ""
+        var padding_daymonth = if (today.day < 10)  "0" else ""
+        binding.editTextReservationStartDate.hint = today.year.toString() + "-" + padding_month + today.month.toString() + "-" + padding_daymonth + today.day.toString()
+        binding.editTextReservationEndDate.hint = today.year.toString() + "-" + padding_month + today.month.toString() + "-" + padding_daymonth + today.day.toString()
+*/
     }
 
     suspend fun bookParking() : Response<Reservation> {
@@ -260,6 +243,53 @@ class BookParkingFragment : Fragment() {
     }
 
     fun estimatePrice() {
+
+        val dateFormat = SimpleDateFormat(
+            "yyyy-MM-dd HH:mm"
+        )
+
+        val start = binding.editTextReservationStartDate.hint.toString() + " " + binding.editTextReservationStartTime.hint.toString()
+        val end = binding.editTextReservationEndDate.hint.toString() + " " + binding.editTextReservationEndTime.hint.toString()
+
+        Log.d("time", start)
+        Log.d("time", end)
+
+        var today = Date()
+
+
+        try {
+            val oldDate = dateFormat.parse(start)
+            System.out.println(oldDate)
+            val currentDate = dateFormat.parse(end)
+            val diff = currentDate.time - oldDate.time
+            val seconds = diff / 1000
+            val minutes = seconds / 60
+            val hours = minutes / 60
+            Log.d("time", hours.toString())
+            val days = hours / 24
+            if (oldDate.before(today)) {
+                Toast.makeText(requireActivity(), "Entry date needs to be after current date", Toast.LENGTH_LONG).show()
+                return
+            }
+            if (currentDate.before(oldDate)) {
+                Toast.makeText(requireActivity(), "Entry date needs to be before exit date", Toast.LENGTH_LONG).show()
+                Log.e("oldDate", "is previous date")
+                Log.e(
+                    "Difference: ", " seconds: " + seconds + " minutes: " + minutes
+                            + " hours: " + hours + " days: " + days
+                )
+                return
+            }
+            else {
+                price = hours * data?.priceperhour!!
+                binding.textViewEstimatedprice.text = price.toString() + " DA"
+            }
+
+        } catch (e: ParseException) {
+            e.printStackTrace()
+        }
+
+
 
     }
 

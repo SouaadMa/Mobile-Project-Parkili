@@ -29,9 +29,10 @@ interface EndPoint {
     suspend fun getParkings(
     ) : Response<List<ParkingLot>>
 
-    @GET("parkings/nearest/{userId}")
+    @GET("parkings/nearest/{lat}/{lng}")
     suspend fun getNearestParkings(
-        @Path("userId") userId : Int
+        @Path("lat") lat : Double,
+        @Path("lng") lng : Double
     ) : Response<List<ParkingLot>>
 
     @GET("schedules/")
@@ -42,6 +43,11 @@ interface EndPoint {
     suspend fun getUserReservations(
         @Path("userId") userId : Int
     ) : Response<List<Reservation>>
+
+    @POST("reservations/add")
+    suspend fun addNewReservation(
+        @Body reservation : Reservation
+    ) : Response<Reservation>
 
     //@GET("users/{username}/{pwd}")
     //suspend fun getUser(@Path("username") username: String?, @Path("pwd") pwd: String?)

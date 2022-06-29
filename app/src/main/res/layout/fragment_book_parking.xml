@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BookParkingFragment">
+
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-40dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/header_shape" />
+
+    <TextView
+        android:id="@+id/textView_parkinglotname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:text="Parking Jardin d'essai"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_parkinglotlocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="Location : Alger"
+        app:layout_constraintStart_toStartOf="@+id/textView_parkinglotname"
+        app:layout_constraintTop_toBottomOf="@+id/textView_parkinglotname" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_parkinglotlocation"
+        app:srcCompat="@drawable/grey_details_backg" />
+
+    <ImageView
+        android:id="@+id/iv_parkingimage"
+        android:layout_width="161dp"
+        android:layout_height="105dp"
+        android:layout_marginTop="10dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="@+id/imageView13"
+        app:layout_constraintStart_toStartOf="@+id/imageView13"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:srcCompat="@drawable/rounded_parkingimage" />
+
+    <TextView
+        android:id="@+id/textView_fromtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:text="From *"
+        app:layout_constraintStart_toStartOf="@+id/imageView13"
+        app:layout_constraintTop_toBottomOf="@+id/iv_parkingimage" />
+
+    <EditText
+        android:id="@+id/editTextReservationStartDate"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/custom_input"
+        android:drawablePadding="12dp"
+        android:elevation="5dp"
+        android:ems="10"
+        android:fontFamily="@font/montserrat_regular"
+        android:hint="Start date"
+        android:inputType="datetime"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imageView13"
+        app:layout_constraintTop_toBottomOf="@+id/textView_fromtitle"
+         />
+
+    <TextView
+        android:id="@+id/textView_untiltitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Until *"
+        app:layout_constraintStart_toStartOf="@+id/textView_fromtitle"
+        app:layout_constraintTop_toBottomOf="@+id/editTextReservationStartDate" />
+
+    <EditText
+        android:id="@+id/editTextReservationEndDate"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/custom_input"
+        android:drawablePadding="12dp"
+        android:elevation="5dp"
+        android:ems="10"
+        android:fontFamily="@font/montserrat_regular"
+        android:hint="End date"
+        android:inputType="datetime"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imageView13"
+        app:layout_constraintTop_toBottomOf="@+id/textView_untiltitle" />
+
+    <TextView
+        android:id="@+id/textView_estimatedpricetitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="30dp"
+        android:text="Your total sum is :"
+        app:layout_constraintStart_toStartOf="@+id/textView_untiltitle"
+        app:layout_constraintTop_toBottomOf="@+id/editTextReservationEndDate" />
+
+    <TextView
+        android:id="@+id/textView_estimatedprice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="20 DA"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView_estimatedpricetitle"
+        app:layout_constraintStart_toEndOf="@+id/textView_estimatedpricetitle" />
+
+    <TextView
+        android:id="@+id/textView_paymentmethodtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Payment Method *"
+        app:layout_constraintStart_toStartOf="@+id/textView_untiltitle"
+        app:layout_constraintTop_toBottomOf="@+id/textView_estimatedpricetitle" />
+
+    <EditText
+        android:id="@+id/editTextPaymentMethod"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/custom_input"
+        android:drawablePadding="12dp"
+        android:elevation="5dp"
+        android:ems="10"
+        android:fontFamily="@font/montserrat_regular"
+        android:hint="End date"
+        android:inputType="datetime"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imageView13"
+        app:layout_constraintTop_toBottomOf="@+id/textView_paymentmethodtitle" />
+
+
+    <Button
+        android:id="@+id/button_confirmbook"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="5dp"
+        android:text="Confirm Reservation"
+        app:layout_constraintBottom_toTopOf="@+id/button_cancelbook"
+        app:layout_constraintEnd_toEndOf="@+id/imageView13"
+        app:layout_constraintStart_toStartOf="@+id/imageView13" />
+
+    <Button
+        android:id="@+id/button_cancelbook"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:text="Cancel"
+        android:theme="@style/Theme.ProjetTDMParkili.Secondary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/button_confirmbook"
+        app:layout_constraintStart_toStartOf="@+id/button_confirmbook" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

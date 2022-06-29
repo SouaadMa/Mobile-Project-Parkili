@@ -1,15 +1,12 @@
 package com.example.projettdm_parkili.viewModels
 
-import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.projettdm_parkili.models.ParkingLot
 import com.example.projettdm_parkili.retrofit.EndPoint
-import com.example.projettdm_parkili.utils.getUserId
 import kotlinx.coroutines.*
 
 class ParkingViewModel : ViewModel() {
-
 
     val data = MutableLiveData<List<ParkingLot>>()
     val loading = MutableLiveData<Boolean>()
@@ -18,7 +15,27 @@ class ParkingViewModel : ViewModel() {
         onError(throwable.localizedMessage)
     }
 
-    fun loadData(ctx : Context) {
+    fun loadData(lat : Double, lng : Double) {
+        /*Nearest parkings of connected user*/
+        if(data.value == null) {
+            CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
+                val response = EndPoint.createInstance().getNearestParkings(lat, lng)
+                withContext(Dispatchers.Main) {
+                    if(response.isSuccessful && response.body() != null) {
+                        loading.value = false
+                        data.postValue(response.body())
+                    }
+                    else {
+                        onError(response.message())
+
+                    }
+                }
+            }
+        }
+
+    }
+
+    fun loadData() {
         /*Nearest parkings of connected user*/
         if(data.value == null) {
             CoroutineScope(Dispatchers.IO + exceptionHandler).launch {

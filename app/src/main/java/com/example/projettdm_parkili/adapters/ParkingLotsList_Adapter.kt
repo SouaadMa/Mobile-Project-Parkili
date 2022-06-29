@@ -46,6 +46,7 @@ class ParkingLotsList_Adapter (
 
     var data = mutableListOf<ParkingLot>()
     var schedules = mutableListOf<OpenSchedule>()
+    public var userPos = mutableListOf(0.0, 0.0)
 
     class ParkingHolder(view: View, private val onListItemClickedListener: (position: Int) -> Unit) : RecyclerView.ViewHolder(view), View.OnClickListener {
 
@@ -88,8 +89,17 @@ class ParkingLotsList_Adapter (
 
                 promotion.text = data[position].nb_occupiedSpots.toString()
                 location.text = data[position].commune
-                /*distance.text = data[position].distance.toString()
-                duration.text = data[position].duration.toString()*/
+
+
+                /*if(userPos[0] != 0.0 && userPos[1] != 0.0) {
+                    var distTimePair = getDistanceAndTime(userPos[0], userPos[1], data[position].positionLat, data[position].positionLng)
+                    Log.d("distancetime", distTimePair.first.toString())
+                    Log.d("distancetime", distTimePair.first.toString())
+                    distance.text = distTimePair.first.toString()
+                    duration.text = distTimePair.second.toString()
+                } else {
+                    Log.d("distancetime", "UserPos is 0.O")
+                }*/
 
                 Glide.with(context).load(url + data[position].image).into(image)
 

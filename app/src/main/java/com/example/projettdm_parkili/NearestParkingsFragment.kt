@@ -11,8 +11,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projettdm_parkili.adapters.ParkingLotsList_Adapter
@@ -24,6 +26,7 @@ import com.example.projettdm_parkili.models.ParkingLot
 import com.example.projettdm_parkili.retrofit.EndPoint
 import com.example.projettdm_parkili.viewModels.ParkingViewModel
 import com.example.projettdm_parkili.viewModels.ReservationViewModel
+import com.google.android.gms.location.LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY
 import com.google.android.gms.location.LocationRequest.PRIORITY_LOW_POWER
 import com.google.android.gms.location.LocationServices
 import com.vmadalin.easypermissions.EasyPermissions
@@ -72,26 +75,35 @@ class NearestParkingsFragment : Fragment(), EasyPermissions.PermissionCallbacks 
 
         viewmodel = ViewModelProvider(requireActivity())[ParkingViewModel::class.java]
 
-
         addObservers()
 
         if(hasLocationPermission()) {
             Toast.makeText(requireContext(), "Rainbow", Toast.LENGTH_SHORT).show()
-            //loadData(recyclerView, requireActivity())
-            viewmodel.loadData(requireActivity())
 
             val fusedLocationClient= LocationServices.getFusedLocationProviderClient(requireActivity())
-            fusedLocationClient.getCurrentLocation(PRIORITY_LOW_POWER, null).addOnSuccessListener { location ->
+
+            fusedLocationClient.getCurrentLocation(PRIORITY_BALANCED_POWER_ACCURACY, null).addOnSuccessListener { location ->
                 if (location != null) {
                     // Récupérer les données de localisation de l’objet location
+                    Toast.makeText(requireContext(), "Successfully got location", Toast.LENGTH_SHORT).show()
                     Toast.makeText(requireContext(), location.longitude.toString(), Toast.LENGTH_SHORT).show()
-
+                    viewmodel.loadData(location.latitude, location.longitude)
+                    adapter.userPos = mutableListOf(location.latitude, location.longitude)
                 }
+                else {
+                    viewmodel.loadData()
+                }
+            }
+            fusedLocationClient.getCurrentLocation(PRIORITY_LOW_POWER, null).addOnFailureListener {
+                Toast.makeText(requireContext(), "Failed to get location", Toast.LENGTH_SHORT).show()
+                viewmodel.loadData()
+
             }
         }
         else {
             Toast.makeText(requireContext(), "No rainbow", Toast.LENGTH_SHORT).show()
             requestLocationPermission()
+            viewmodel.loadData()
         }
 
         binding.textViewMapView.setOnClickListener {
@@ -159,9 +171,12 @@ class NearestParkingsFragment : Fragment(), EasyPermissions.PermissionCallbacks 
 
     private fun onListItemClick(position: Int) {
         Toast.makeText(requireActivity(), data?.get(position)?.name, Toast.LENGTH_SHORT).show()
-        val intent = Intent(requireActivity(), ParkingLotDetailsActivity::class.java)
-        intent.putExtra("parking", data?.get(position))
-        startActivity(intent)
+        //val intent = Intent(requireActivity(), ParkingLotDetailsActivity::class.java)
+        //intent.putExtra("parking", data?.get(position))
+        //startActivity(intent)
+
+        var bundle = bundleOf("position" to position)
+        requireActivity().findNavController(R.id.navHost).navigate(R.id.action_fragmentnearest_to_fragmentdetails, bundle)
     }
 
     private fun hasLocationPermission() =
@@ -171,6 +186,7 @@ class NearestParkingsFragment : Fragment(), EasyPermissions.PermissionCallbacks 
         )
 
     private fun requestLocationPermission() {
+        Log.d("perm", "requestlocationpermission")
         EasyPermissions.requestPermissions(
             this,
             "This application cannot work properly without Fine Location permission",
@@ -184,11 +200,13 @@ class NearestParkingsFragment : Fragment(), EasyPermissions.PermissionCallbacks 
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
+        Log.d("perm", "onrequestpermissionresult")
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
     }
 
     override fun onPermissionsDenied(requestCode: Int, perms: List<String>) {
+        Log.d("perm", "onpermissiondenied")
         if(EasyPermissions.somePermissionPermanentlyDenied(this, listOf(perms.first()))) {
             SettingsDialog.Builder(requireContext()).build().show()
         }

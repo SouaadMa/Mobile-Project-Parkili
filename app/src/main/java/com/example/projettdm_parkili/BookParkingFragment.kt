@@ -79,8 +79,8 @@ class BookParkingFragment : Fragment() {
                     var response = bookParking()
                     withContext(Dispatchers.Main) {
                         if (response.isSuccessful && response.body() != null) {
-                            //requireActivity().findNavController(R.id.navHost)
-                                //.navigate(R.id.action_fragment_booking_to_fragment_reservations)
+                            requireActivity().findNavController(R.id.navHost)
+                                .navigate(R.id.action_fragment_booking_to_fragment_reservations)
 
                         } else {
                             Log.d("create-res", response.message())

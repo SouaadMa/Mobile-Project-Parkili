@@ -21,9 +21,9 @@
     </fragment>
 
     <fragment android:id="@+id/fragment_booking" tools:layout="@layout/fragment_book_parking" android:name="com.example.projettdm_parkili.BookParkingFragment">
-        <!--action
+        <action
             android:id="@+id/action_fragment_booking_to_fragment_reservations"
-            app:destination="@id/fragment_reservations" /-->
+            app:destination="@id/fragment_reservations" />
     </fragment>
 
 

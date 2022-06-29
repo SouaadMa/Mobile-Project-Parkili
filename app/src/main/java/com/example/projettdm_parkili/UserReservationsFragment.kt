@@ -8,8 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projettdm_parkili.adapters.ReservationsList_Adapter
@@ -51,7 +53,7 @@ class UserReservationsFragment : Fragment() {
         val layoutManager = LinearLayoutManager(requireActivity())
         recyclerView.layoutManager = layoutManager
 
-        adapter = ReservationsList_Adapter(requireActivity())
+        adapter = ReservationsList_Adapter(requireActivity(), onListItemClickedListener = { position -> onListItemClick(position) } )
         recyclerView.adapter = adapter
 
         viewmodel = ViewModelProvider(requireActivity())[ReservationViewModel::class.java]
@@ -114,6 +116,12 @@ class UserReservationsFragment : Fragment() {
             }
 
         }
+    }
+
+    private fun onListItemClick(position: Int) {
+        var id = viewmodel.data.value?.get(position)?.parking_id.toString()
+        var bundle = bundleOf("id" to id)
+        requireActivity().findNavController(R.id.navHost).navigate(R.id.action_fragment_reservations_to_fragment_qr, bundle)
     }
 
 }

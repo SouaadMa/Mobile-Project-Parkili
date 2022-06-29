@@ -13,7 +13,11 @@
             app:destination="@id/fragment_details" />
     </fragment>
 
-    <fragment android:id="@+id/fragment_reservations" tools:layout="@layout/fragment_user_reservations" android:label="MyReservs" android:name="com.example.projettdm_parkili.UserReservationsFragment"/>
+    <fragment android:id="@+id/fragment_reservations" tools:layout="@layout/fragment_user_reservations" android:label="MyReservs" android:name="com.example.projettdm_parkili.UserReservationsFragment">
+        <action
+            android:id="@+id/action_fragment_reservations_to_fragment_qr"
+            app:destination="@id/fragment_qr" />
+    </fragment>
 
     <fragment android:id="@+id/fragment_details" tools:layout="@layout/fragment_parking_lot_details" android:name="com.example.projettdm_parkili.ParkingLotDetailsFragment">
         <action
@@ -31,6 +35,9 @@
         <action
             android:id="@+id/action_fragment_search_to_fragment_details"
             app:destination="@id/fragment_details" />
+    </fragment>
+
+    <fragment android:id="@+id/fragment_qr" tools:layout="@layout/fragment_reservation_q_r" android:label="QR Reservation Code" android:name="com.example.projettdm_parkili.ReservationQRFragment">
     </fragment>
 
 

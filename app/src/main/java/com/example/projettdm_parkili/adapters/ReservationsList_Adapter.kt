@@ -20,13 +20,14 @@ import com.google.zxing.qrcode.QRCodeWriter
 
 
 class ReservationsList_Adapter (
-    val context : Context
+    val context : Context,
+    val onListItemClickedListener : (position:Int) -> Unit
 
 ) : RecyclerView.Adapter<ReservationsList_Adapter.ReservationHolder>() {
 
     var data = mutableListOf<Reservation>()
 
-    class ReservationHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ReservationHolder(view: View, private val onListItemClickedListener: (position: Int) -> Unit) : RecyclerView.ViewHolder(view), View.OnClickListener {
 
         val title = view.findViewById(R.id.tv_parkingtitle) as TextView
         val date = view.findViewById(R.id.tv_datereservation) as TextView
@@ -37,12 +38,21 @@ class ReservationsList_Adapter (
         //val image = view.findViewById(R.id.iv_parkingimage) as ImageView
         val qrcode = view.findViewById(R.id.idIVQrcode) as ImageView
 
+        init {
+            view.setOnClickListener(this)
+        }
+
+        override fun onClick(p0: View?) {
+            val position = adapterPosition
+            onListItemClickedListener(position)
+        }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReservationHolder {
         Log.d("reserv", "onCreateViewHolder")
 
-        return ReservationHolder(LayoutInflater.from(context).inflate(R.layout.reservation_item, parent, false))
+        return ReservationHolder(LayoutInflater.from(context).inflate(R.layout.reservation_item, parent, false), onListItemClickedListener)
     }
 
 

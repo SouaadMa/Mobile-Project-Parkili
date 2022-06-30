@@ -3,11 +3,13 @@
     <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="Nearest Parkings" android:visible="true" android:icon="@drawable/ic_home_drawer" android:enabled="true" android:id="@+id/fragment_nearest"/>
+    <item android:title="Map View" android:visible="true" android:icon="@drawable/ic_alert_home" android:enabled="true" android:id="@+id/fragment_map"/>
 
     <item android:title="Search for Parkings" android:visible="true" android:icon="@drawable/ic_home_drawer" android:enabled="true" android:id="@+id/fragment_search"/>
 
     <item android:title="My reservations" android:visible="true" android:icon="@drawable/ic_sells_menu" android:enabled="true" android:id="@+id/fragment_reservations"/>
 
     <item android:title="Help" android:visible="true" android:icon="@drawable/ic_alert_home" android:enabled="true" android:id="@+id/fragment_help"/>
+
 
 </menu>

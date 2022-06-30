@@ -42,13 +42,13 @@
         android:layout_marginTop="23dp"
         app:layout_constraintEnd_toStartOf="@+id/imageView5"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintStart_toEndOf="@+id/iv_GoogleSignIn"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:srcCompat="@drawable/ic_icons8_facebook"
         tools:ignore="VectorDrawableCompat" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/iv_GoogleSignIn"
         android:layout_width="27dp"
         android:layout_height="27dp"
         android:layout_marginTop="24dp"
@@ -60,14 +60,14 @@
         app:srcCompat="@drawable/ic_google__g__logo"
         tools:ignore="VectorDrawableCompat" />
 
-    <com.google.android.gms.common.SignInButton
+    <!--com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:translationZ="-2dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3" />
+        app:layout_constraintTop_toTopOf="@+id/imageView3" /-->
 
     <ImageView
         android:id="@+id/imageView5"

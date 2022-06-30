@@ -40,5 +40,8 @@
     <fragment android:id="@+id/fragment_qr" tools:layout="@layout/fragment_reservation_q_r" android:label="QR Reservation Code" android:name="com.example.projettdm_parkili.ReservationQRFragment">
     </fragment>
 
+    <fragment android:id="@+id/fragment_map" tools:layout="@layout/fragment_maps" android:label="Map View" android:name="com.example.projettdm_parkili.MapsFragment">
+    </fragment>
+
 
 </navigation>

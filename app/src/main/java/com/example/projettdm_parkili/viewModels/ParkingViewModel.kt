@@ -11,19 +11,21 @@ class ParkingViewModel : ViewModel() {
     val data = MutableLiveData<List<ParkingLot>>()
     val loading = MutableLiveData<Boolean>()
     val errorMessage = MutableLiveData<String>()
+    var refresh = true
     val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
         onError(throwable.localizedMessage)
     }
 
     fun loadData(lat : Double, lng : Double) {
         /*Nearest parkings of connected user*/
-        if(data.value == null) {
+        if(refresh) {
             CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
                 val response = EndPoint.createInstance().getNearestParkings(lat, lng)
                 withContext(Dispatchers.Main) {
                     if(response.isSuccessful && response.body() != null) {
                         loading.value = false
                         data.postValue(response.body())
+                        refresh = false
                     }
                     else {
                         onError(response.message())

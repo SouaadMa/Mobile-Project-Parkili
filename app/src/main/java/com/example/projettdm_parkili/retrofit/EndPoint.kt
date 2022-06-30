@@ -15,6 +15,11 @@ interface EndPoint {
         @Body review: Review
     ) : Response<Review>
 
+    @GET("reviews/{parkingid}")
+    suspend fun getAverageRating(
+        @Path("parkingid") parkingid : Int
+    ) : Response<Review>
+
     @POST("users/add")
     suspend fun addNewUser(
         @Body user: User

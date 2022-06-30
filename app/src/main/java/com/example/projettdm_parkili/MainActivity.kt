@@ -209,6 +209,7 @@ class MainActivity : AppCompatActivity() {
 
         var intent = Intent(this, NavHomeActivity::class.java )
         startActivity(intent)
+        finish()
 
     }
 }

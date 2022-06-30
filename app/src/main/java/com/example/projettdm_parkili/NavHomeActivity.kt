@@ -1,12 +1,11 @@
 package com.example.projettdm_parkili
 
-import android.Manifest
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -16,8 +15,6 @@ import com.example.projettdm_parkili.utils.getUserName
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.messaging.FirebaseMessaging
-import com.vmadalin.easypermissions.EasyPermissions
-import com.vmadalin.easypermissions.dialogs.SettingsDialog
 
 
 class NavHomeActivity : AppCompatActivity() {
@@ -34,16 +31,16 @@ class NavHomeActivity : AppCompatActivity() {
         binding = ActivityNavHomeBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHost) as NavHostFragment
+        val navHostFragment = supportFragmentManager.findFragmentById(binding.navHost.id) as NavHostFragment
         navController = navHostFragment.navController
         NavigationUI.setupActionBarWithNavController(this,navController,binding.drawerLayout)
         NavigationUI.setupWithNavController(binding.navView,navController)
 
 
         //Logged in as : fullname in nav drawer
-        val navigationView : NavigationView = findViewById(R.id.nav_view)
+        val navigationView : NavigationView = binding.navView
         val headerView : View = navigationView.getHeaderView(0)
-        val navUsername : TextView = headerView.findViewById(R.id.tv_username)
+        val navUsername : TextView = headerView.findViewById(R.id.tv_fullname)
         navUsername.text = getUserName(this)
 
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
@@ -63,6 +60,8 @@ class NavHomeActivity : AppCompatActivity() {
 
 
     }
+
+
 
 
     override fun onSupportNavigateUp() = super.onSupportNavigateUp() || NavigationUI.navigateUp(navController,binding.drawerLayout)

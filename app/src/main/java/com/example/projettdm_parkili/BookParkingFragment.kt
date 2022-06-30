@@ -147,13 +147,14 @@ class BookParkingFragment : Fragment() {
                         var response = bookParking()
                         withContext(Dispatchers.Main) {
                             if (response.isSuccessful && response.body() != null) {
-                                var dao = AppDatabase.buildDatabase(requireActivity())?.getReservationDao()
+                                var dao = AppDatabase.buildDatabase(requireContext())?.getReservationDao()
+                                Log.d("reserv", reservation.reservation_id.toString())
                                 dao?.addReservation(reservation)
                                 requireActivity().findNavController(R.id.navHost)
                                     .navigate(R.id.action_fragment_booking_to_fragment_reservations)
 
                             } else {
-                                Log.d("create-res", response.message())
+                                Log.d("reserv", response.message())
                                 Toast.makeText(
                                     requireActivity(),
                                     "Reservation was not created",
@@ -238,11 +239,12 @@ class BookParkingFragment : Fragment() {
         reservation = Reservation(
             user_id = getUserId(requireContext()),
             parking_id = data?.parking_id!!,
-            entrytime = binding.editTextReservationStartDate.text.toString(),
-            exittime = binding.editTextReservationEndDate.text.toString(),
+            entrytime = binding.editTextReservationStartTime.hint.toString(),
+            exittime = binding.editTextReservationEndTime.hint.toString(),
             paymentMethod = binding.editTextPaymentMethod.text.toString(),
-            totalPrice = price,
-            parking_name = binding.textViewParkinglotname.text.toString()
+            totalPrice = price.toInt(),
+            parking_name = binding.textViewParkinglotname.text.toString(),
+            date = ""
         )
         val resp = EndPoint.createInstance().addNewReservation(
             reservation

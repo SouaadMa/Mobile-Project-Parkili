@@ -59,6 +59,7 @@ class SearchFragment : Fragment() {
                 else if (binding.editTextSearchLocation.text.isNotBlank() and binding.editTextSearchPrice.text.isNotBlank() and binding.editTextSearchDistance.text.isNotBlank())
                     viewmodel.searchByLocationMaxPriceMaxDistance(binding.editTextSearchLocation.text.toString(), binding.editTextSearchPrice.text.toString().toDouble(), binding.editTextSearchDistance.text.toString().toDouble())
 
+                viewmodel.refresh = true
                 return@OnKeyListener true
             }
             false
@@ -69,6 +70,7 @@ class SearchFragment : Fragment() {
                 if (binding.editTextSearchLocation.text.isNotBlank() and binding.editTextSearchPrice.text.isNotBlank() and binding.editTextSearchDistance.text.isNotBlank()) {
                     viewmodel.searchByLocationMaxPriceMaxDistance(binding.editTextSearchLocation.text.toString(), binding.editTextSearchPrice.text.toString().toDouble(), binding.editTextSearchDistance.text.toString().toDouble())
                 }
+                viewmodel.refresh = true
 
                 return@OnKeyListener true
             }

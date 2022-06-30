@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">ProjetTDM-Parkili</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">Hello help</string>
     <string name="msg_token_fmt"><![CDATA[cUavddluSXSh8WE9wzLpDO:APA91bGZ2ILLHskjd4VOb_vF-2EeRpO_GRqnCCJr75u829nEmQuF5KBmIVBzZBDwMbzDRP_nxQ9z1OBac0NYifQVbjECCRPKTzaXkje_uxNJNOr6-AQxZGx0shYZXaEITHV3q_XdUiZG]]></string>
 </resources>

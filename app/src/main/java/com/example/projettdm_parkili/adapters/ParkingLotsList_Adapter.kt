@@ -87,7 +87,7 @@ class ParkingLotsList_Adapter (
                     state.setTextColor(Color.RED)
                 }
 
-                occupation.text = (data[position].nb_totalSpots / data[position].nb_occupiedSpots).toString() + "%"
+                occupation.text = (data[position].nb_occupiedSpots * 100 / data[position].nb_totalSpots).toString() + "%"
 
                 location.text = data[position].commune
 
@@ -97,9 +97,9 @@ class ParkingLotsList_Adapter (
                     Log.d("distancetime", distTimePair.first.toString())
                     Log.d("distancetime", distTimePair.first.toString())
                     data[position].distance = distTimePair.first
-                    data[position].duration = distTimePair.second
+                    data[position].duration = distTimePair.second!!/60
                     distance.text = distTimePair.first.toString() + " km"
-                    duration.text = (distTimePair.second!!/3600).toInt().toString() + " hours"
+                    duration.text = (distTimePair.second!!/60).toInt().toString() + " min"
                 } else {
                     Log.d("distancetime", "UserPos is 0.O")
                 }

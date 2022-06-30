@@ -8,12 +8,13 @@ import java.io.Serializable
 data class Reservation(
 
     @PrimaryKey(autoGenerate = true)
-    val reservation_id : Int? = null,
+    val reservation_id : Int = 0,
+
     val user_id : Int,
     val parking_id : Int,
     val paymentMethod : String, /**/
     val parking_name : String, /**/
-    val totalPrice : Double, /**/
+    val totalPrice : Int, /**/
     val date : String? = null,
     val entrytime : String,
     val exittime : String,

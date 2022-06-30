@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.PackageManagerCompat.LOG_TAG
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -66,6 +67,17 @@ class NearestParkingsFragment : Fragment(), EasyPermissions.PermissionCallbacks 
 
         super.onViewCreated(view, savedInstanceState)
 
+                /*
+         * Sets up a SwipeRefreshLayout.OnRefreshListener that is invoked when the user
+         * performs a swipe-to-refresh gesture.
+         */
+        binding.swiperefresh.setOnRefreshListener {
+            Log.i("refresh", "onRefresh called from SwipeRefreshLayout")
+            onViewCreated(this.requireView(), null)
+            binding.swiperefresh.isRefreshing = false
+            return@setOnRefreshListener
+        }
+
         val recyclerView = binding.rvParkings
         val layoutManager = LinearLayoutManager(requireActivity())
         recyclerView.layoutManager = layoutManager
@@ -85,14 +97,12 @@ class NearestParkingsFragment : Fragment(), EasyPermissions.PermissionCallbacks 
             fusedLocationClient.getCurrentLocation(PRIORITY_BALANCED_POWER_ACCURACY, null).addOnSuccessListener { location ->
                 if (location != null) {
                     // Récupérer les données de localisation de l’objet location
-                    Toast.makeText(requireContext(), "Successfully got location", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(requireContext(), "Successfully got location", Toast.LENGTH_SHORT).show()
                     //Toast.makeText(requireContext(), location.longitude.toString(), Toast.LENGTH_SHORT).show()
+                    viewmodel.refresh = true
                     viewmodel.loadData(location.latitude, location.longitude)
                     adapter.userPos = mutableListOf(location.latitude, location.longitude)
 
-                }
-                else {
-                    viewmodel.loadData()
                 }
             }
             /*fusedLocationClient.getCurrentLocation(PRIORITY_LOW_POWER, null).addOnFailureListener {
@@ -104,7 +114,6 @@ class NearestParkingsFragment : Fragment(), EasyPermissions.PermissionCallbacks 
         else {
             //Toast.makeText(requireContext(), "No rainbow", Toast.LENGTH_SHORT).show()
             requestLocationPermission()
-            viewmodel.loadData()
         }
 
         binding.textViewMapView.setOnClickListener {
@@ -219,6 +228,8 @@ class NearestParkingsFragment : Fragment(), EasyPermissions.PermissionCallbacks 
             "Permission Granted",
             Toast.LENGTH_SHORT
         ).show()
+        viewmodel.refresh = true
+        this.onViewCreated(this.requireView(), null)
     }
 
     fun addObservers() {

@@ -17,7 +17,7 @@ data class Reservation(
     val date : String? = null,
     val entrytime : String,
     val exittime : String,
-    val spotnum : Int = 0
+    val spotnum : Int = 0 /*To delete*/
 
 
 ) : Serializable

@@ -40,6 +40,8 @@ class BookParkingFragment : Fragment() {
     var position = 0
     var price = 0.0
 
+    lateinit var reservation: Reservation
+
     private var db : AppDatabase? = null
 
     override fun onCreateView(
@@ -133,15 +135,20 @@ class BookParkingFragment : Fragment() {
                         "Entry time required but empty"
                     else if (binding.editTextReservationEndDate.hint.equals("Exit Date"))
                         "Exit date required but empty"
+                    else if (binding.editTextPaymentMethod.text.isEmpty())
+                        "Payment method required but empty"
                     else null
 
                 if(errormsg != null) Toast.makeText(requireActivity(), errormsg, Toast.LENGTH_SHORT).show()
                 else {
 
                     CoroutineScope(Dispatchers.IO).launch {
+
                         var response = bookParking()
                         withContext(Dispatchers.Main) {
                             if (response.isSuccessful && response.body() != null) {
+                                var dao = AppDatabase.buildDatabase(requireActivity())?.getReservationDao()
+                                dao?.addReservation(reservation)
                                 requireActivity().findNavController(R.id.navHost)
                                     .navigate(R.id.action_fragment_booking_to_fragment_reservations)
 
@@ -228,16 +235,17 @@ class BookParkingFragment : Fragment() {
     }
 
     suspend fun bookParking() : Response<Reservation> {
+        reservation = Reservation(
+            user_id = getUserId(requireContext()),
+            parking_id = data?.parking_id!!,
+            entrytime = binding.editTextReservationStartDate.text.toString(),
+            exittime = binding.editTextReservationEndDate.text.toString(),
+            paymentMethod = binding.editTextPaymentMethod.text.toString(),
+            totalPrice = price,
+            parking_name = binding.textViewParkinglotname.text.toString()
+        )
         val resp = EndPoint.createInstance().addNewReservation(
-            Reservation(
-                user_id = getUserId(requireContext()),
-                parking_id = data?.parking_id!!,
-                entrytime = binding.editTextReservationStartDate.text.toString(),
-                exittime = binding.editTextReservationEndDate.text.toString(),
-                paymentMethod = binding.editTextPaymentMethod.text.toString(),
-                totalPrice = price,
-                parking_name = binding.textViewParkinglotname.text.toString()
-            )
+            reservation
         )
         return resp
     }

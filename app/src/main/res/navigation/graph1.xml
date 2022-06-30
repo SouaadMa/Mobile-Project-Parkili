@@ -7,13 +7,13 @@
     <fragment android:id="@+id/fragment_help" tools:layout="@layout/fragment_help" android:label="First" android:name="com.example.projettdm_parkili.HelpFragment">
     </fragment>
 
-    <fragment android:id="@+id/fragment_nearest" tools:layout="@layout/fragment_nearest_parkings" android:label="Nearest" android:name="com.example.projettdm_parkili.NearestParkingsFragment">
+    <fragment android:id="@+id/fragment_nearest" tools:layout="@layout/fragment_nearest_parkings" android:label="Nearest Parkings" android:name="com.example.projettdm_parkili.NearestParkingsFragment">
         <action
             android:id="@+id/action_fragmentnearest_to_fragmentdetails"
             app:destination="@id/fragment_details" />
     </fragment>
 
-    <fragment android:id="@+id/fragment_reservations" tools:layout="@layout/fragment_user_reservations" android:label="MyReservs" android:name="com.example.projettdm_parkili.UserReservationsFragment">
+    <fragment android:id="@+id/fragment_reservations" tools:layout="@layout/fragment_user_reservations" android:label="My Reservations" android:name="com.example.projettdm_parkili.UserReservationsFragment">
         <action
             android:id="@+id/action_fragment_reservations_to_fragment_qr"
             app:destination="@id/fragment_qr" />

@@ -1,6 +1,5 @@
 package com.example.projettdm_parkili
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.KeyEvent
 import androidx.fragment.app.Fragment
@@ -9,8 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -57,29 +54,26 @@ class SearchFragment : Fragment() {
         binding.editTextSearchLocation.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
             if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
 
-                if (binding.editTextSearchLocation.text.isNotBlank() and binding.editTextSearchName.text.isBlank())
+                if (binding.editTextSearchLocation.text.isNotBlank() and binding.editTextSearchPrice.text.isBlank() and binding.editTextSearchDistance.text.isBlank())
                     viewmodel.searchByLocation(binding.editTextSearchLocation.text.toString())
-                else if (binding.editTextSearchLocation.text.isNotBlank() and binding.editTextSearchName.text.isBlank())
-                    viewmodel.searchByLocationName(binding.editTextSearchLocation.text.toString(), binding.editTextSearchName.text.toString())
+                else if (binding.editTextSearchLocation.text.isNotBlank() and binding.editTextSearchPrice.text.isNotBlank() and binding.editTextSearchDistance.text.isNotBlank())
+                    viewmodel.searchByLocationMaxPriceMaxDistance(binding.editTextSearchLocation.text.toString(), binding.editTextSearchPrice.text.toString().toDouble(), binding.editTextSearchDistance.text.toString().toDouble())
 
                 return@OnKeyListener true
             }
             false
         })
-        binding.editTextSearchName.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+        binding.editTextSearchPrice.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
             if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
 
-                if (binding.editTextSearchName.text.isNotBlank() and binding.editTextSearchLocation.text.isBlank())
-                    viewmodel.searchByName(binding.editTextSearchName.text.toString())
-                else if (binding.editTextSearchLocation.text.isNotBlank() and binding.editTextSearchName.text.isBlank())
-                    viewmodel.searchByLocationName(binding.editTextSearchLocation.text.toString(), binding.editTextSearchName.text.toString())
+                if (binding.editTextSearchLocation.text.isNotBlank() and binding.editTextSearchPrice.text.isNotBlank() and binding.editTextSearchDistance.text.isNotBlank()) {
+                    viewmodel.searchByLocationMaxPriceMaxDistance(binding.editTextSearchLocation.text.toString(), binding.editTextSearchPrice.text.toString().toDouble(), binding.editTextSearchDistance.text.toString().toDouble())
+                }
 
                 return@OnKeyListener true
             }
             false
         })
-
-
 
 
     }

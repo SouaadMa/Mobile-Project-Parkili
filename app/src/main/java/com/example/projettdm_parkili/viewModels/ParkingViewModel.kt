@@ -85,9 +85,9 @@ class ParkingViewModel : ViewModel() {
         }
     }
 
-    fun searchByLocationName(location : String, name : String) {
+    fun searchByLocationMaxPriceMaxDistance(location : String, maxprice : Double, maxDistance : Double) {
         CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
-            val response = EndPoint.createInstance().getParkingsByLocationName(location, name)
+            val response = EndPoint.createInstance().getParkingsByLocationMaxPriceMaxDistance(location, maxprice, maxDistance)
             withContext(Dispatchers.Main) {
                 if(response.isSuccessful && response.body() != null) {
                     loading.value = false

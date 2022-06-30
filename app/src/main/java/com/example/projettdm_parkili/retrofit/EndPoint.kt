@@ -59,10 +59,11 @@ interface EndPoint {
         @Path("location") location : String
     ): Response<List<ParkingLot>>
 
-    @GET("parkings/{location}/{name}")
-    suspend fun getParkingsByLocationName(
+    @GET("parkings/{location}/{price}/{distance}")
+    suspend fun getParkingsByLocationMaxPriceMaxDistance(
         @Path("location") location : String,
-        @Path("name") name : String
+        @Path("price") price : Double,
+        @Path("distance") distance : Double
     ): Response<List<ParkingLot>>
 
     //@GET("users/{username}/{pwd}")

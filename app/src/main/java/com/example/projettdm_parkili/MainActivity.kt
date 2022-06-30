@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.projettdm_parkili.databinding.ActivityMainBinding
 import com.example.projettdm_parkili.models.User
 import com.example.projettdm_parkili.retrofit.EndPoint
+import com.example.projettdm_parkili.utils.getUserId
 import com.example.projettdm_parkili.utils.isLogin
 import com.example.projettdm_parkili.utils.saveUserID
 import com.example.projettdm_parkili.utils.saveUserName
@@ -120,11 +121,29 @@ class MainActivity : AppCompatActivity() {
                 if (resp.isSuccessful && resp.body() != null) {
                     saveUserName(ctx, resp.body()?.fullname!!)
                     saveUserID(ctx, resp.body()?.userId!!)
+                    //load user reservations in local storage
+                    loadUserReservations(ctx)
                     openHomeActivity()
                 } else {
                     Log.d("io", "resp is not successful")
                     val errormsg = "Could not login"
                     showErrorMsg(errormsg!!)
+                }
+            }
+        }
+    }
+
+    private fun loadUserReservations(ctx : Context) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = EndPoint.createInstance().getUserReservations(getUserId(ctx))
+            withContext(Dispatchers.Main) {
+                if(response.isSuccessful && response.body() != null) {
+                    var dao = AppDatabase.buildDatabase(ctx)?.getReservationDao()
+                    dao?.addReservations(response.body()!!)
+                    Log.d("loadreservations", "Loaded user reservations")
+                }
+                else {
+                    Log.d("loadreservations", "Couldn't load user reservations")
                 }
             }
         }

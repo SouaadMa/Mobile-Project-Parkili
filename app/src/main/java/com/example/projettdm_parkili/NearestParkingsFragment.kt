@@ -78,7 +78,7 @@ class NearestParkingsFragment : Fragment(), EasyPermissions.PermissionCallbacks 
         addObservers()
 
         if(hasLocationPermission()) {
-            Toast.makeText(requireContext(), "Rainbow", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(requireContext(), "Rainbow", Toast.LENGTH_SHORT).show()
 
             val fusedLocationClient= LocationServices.getFusedLocationProviderClient(requireActivity())
 
@@ -86,22 +86,23 @@ class NearestParkingsFragment : Fragment(), EasyPermissions.PermissionCallbacks 
                 if (location != null) {
                     // Récupérer les données de localisation de l’objet location
                     Toast.makeText(requireContext(), "Successfully got location", Toast.LENGTH_SHORT).show()
-                    Toast.makeText(requireContext(), location.longitude.toString(), Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(requireContext(), location.longitude.toString(), Toast.LENGTH_SHORT).show()
                     viewmodel.loadData(location.latitude, location.longitude)
                     adapter.userPos = mutableListOf(location.latitude, location.longitude)
+
                 }
                 else {
                     viewmodel.loadData()
                 }
             }
-            fusedLocationClient.getCurrentLocation(PRIORITY_LOW_POWER, null).addOnFailureListener {
+            /*fusedLocationClient.getCurrentLocation(PRIORITY_LOW_POWER, null).addOnFailureListener {
                 Toast.makeText(requireContext(), "Failed to get location", Toast.LENGTH_SHORT).show()
                 viewmodel.loadData()
 
-            }
+            }*/
         }
         else {
-            Toast.makeText(requireContext(), "No rainbow", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(requireContext(), "No rainbow", Toast.LENGTH_SHORT).show()
             requestLocationPermission()
             viewmodel.loadData()
         }
@@ -171,9 +172,6 @@ class NearestParkingsFragment : Fragment(), EasyPermissions.PermissionCallbacks 
 
     private fun onListItemClick(position: Int) {
         Toast.makeText(requireActivity(), data?.get(position)?.name, Toast.LENGTH_SHORT).show()
-        //val intent = Intent(requireActivity(), ParkingLotDetailsActivity::class.java)
-        //intent.putExtra("parking", data?.get(position))
-        //startActivity(intent)
 
         var bundle = bundleOf("position" to position)
         requireActivity().findNavController(R.id.navHost).navigate(R.id.action_fragmentnearest_to_fragmentdetails, bundle)

@@ -1,6 +1,7 @@
 package com.example.projettdm_parkili.utils
 
 import android.content.Context
+import android.location.Location
 import androidx.core.content.edit
 
 const val fileName = "parkili_pref"
@@ -36,3 +37,4 @@ fun isLogin(context: Context)= getUserId(context)!=invalidUserId
 fun clearUserId(context: Context) {
     saveUserID(context,invalidUserId)
 }
+

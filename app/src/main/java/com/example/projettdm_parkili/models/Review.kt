@@ -7,6 +7,8 @@ import androidx.room.PrimaryKey
 data class Review(
     @PrimaryKey(autoGenerate = true)
     var reviewId:Int?=null,
+    val user_id : Int,
+    val parking_id : Int,
     val note : Int,
     val comment : String,
     val isSynchronized : Int = 0

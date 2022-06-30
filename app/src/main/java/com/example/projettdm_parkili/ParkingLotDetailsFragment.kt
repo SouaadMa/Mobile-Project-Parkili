@@ -18,6 +18,7 @@ import com.example.projettdm_parkili.databinding.FragmentParkingLotDetailsBindin
 import com.example.projettdm_parkili.models.ParkingLot
 import com.example.projettdm_parkili.models.Review
 import com.example.projettdm_parkili.services.ReviewSyncService
+import com.example.projettdm_parkili.utils.getUserId
 import com.example.projettdm_parkili.viewModels.ParkingViewModel
 
 
@@ -83,7 +84,12 @@ class ParkingLotDetailsFragment : Fragment() {
         }
 
         db?.getReviewDao()?.addReview(
-            Review(note = i, comment = "great parking")
+            Review(
+                user_id = getUserId(requireActivity()),
+                parking_id = data?.parking_id!!,
+                note = i,
+                comment = "great parking"
+            )
         )
         val constraints = Constraints.Builder(). setRequiredNetworkType(NetworkType.CONNECTED). // UNMETERED signifie réseau Wi-Fi
         build()
@@ -101,16 +107,16 @@ class ParkingLotDetailsFragment : Fragment() {
 
         binding.textViewUnitPrice.text = data?.priceperhour.toString()
 
-        binding.textViewOccupation.text = (data?.nb_occupiedSpots!!/(data?.nb_totalSpots!!)).toString() + "%"
+        binding.textViewOccupation.text = (data?.nb_totalSpots!!/(data?.nb_occupiedSpots!!)).toString() + "%"
 
         Glide.with(requireActivity()).load(url + data?.image).into(binding.ivParkingimage)
 
         //binding.textViewState.text =
         //rating
-/*
-        binding.textViewDistance.text = parking.distance.toString()
-        binding.textViewDuration.text = parking.duration.toString()
 
+        binding.textViewDistance.text = data?.distance.toString()
+        binding.textViewDuration.text = data?.duration.toString()
+/*
         if (parking.state.equals("Closed", true) ){
             binding.textViewState.setTextColor(ContextCompat.getColor(this, R.color.badnews_red))
         }else{

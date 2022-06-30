@@ -86,7 +86,7 @@ class ParkingLotDetailsActivity : AppCompatActivity() {
 
     fun fillTextViews() {
         binding.textViewParkinglotname.text = parking.name
-        binding.textViewParkinglotlocation.text = parking.positionLat.toString()
+        binding.textViewParkinglotlocation.text = parking.positionlat.toString()
         binding.textViewState.text = parking.commune
 /*
         binding.textViewDistance.text = parking.distance.toString()

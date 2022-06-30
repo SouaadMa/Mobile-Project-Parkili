@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -52,7 +53,7 @@ class ParkingLotsList_Adapter (
 
             val title = view.findViewById(R.id.tv_parkingtitle) as TextView
             val state = view.findViewById(R.id.tv_parkingstate) as TextView
-            val promotion = view.findViewById(R.id.tv_occupation) as TextView
+            val occupation = view.findViewById(R.id.tv_occupation) as TextView
             val location = view.findViewById(R.id.tv_location) as TextView
             val distance = view.findViewById(R.id.tv_distance) as TextView
             val duration = view.findViewById(R.id.tv_duration) as TextView
@@ -86,19 +87,22 @@ class ParkingLotsList_Adapter (
                     state.setTextColor(Color.RED)
                 }
 
-                promotion.text = data[position].nb_occupiedSpots.toString()
+                occupation.text = (data[position].nb_totalSpots / data[position].nb_occupiedSpots).toString() + "%"
+
                 location.text = data[position].commune
 
 
-                /*if(userPos[0] != 0.0 && userPos[1] != 0.0) {
-                    var distTimePair = getDistanceAndTime(userPos[0], userPos[1], data[position].positionLat, data[position].positionLng)
+                if(userPos[0] != 0.0 && userPos[1] != 0.0) {
+                    var distTimePair = getDistanceAndTime(userPos[0], userPos[1], data[position].positionlat, data[position].positionlng)
                     Log.d("distancetime", distTimePair.first.toString())
                     Log.d("distancetime", distTimePair.first.toString())
-                    distance.text = distTimePair.first.toString()
-                    duration.text = distTimePair.second.toString()
+                    data[position].distance = distTimePair.first
+                    data[position].duration = distTimePair.second
+                    distance.text = distTimePair.first.toString() + " km"
+                    duration.text = (distTimePair.second!!/3600).toInt().toString() + " hours"
                 } else {
                     Log.d("distancetime", "UserPos is 0.O")
-                }*/
+                }
 
                 Glide.with(context).load(url + data[position].image).into(image)
 
@@ -165,34 +169,6 @@ class ParkingLotsList_Adapter (
     }
 
 
-    fun accessCurrentPos() {
-        val fusedLocationClient= LocationServices.getFusedLocationProviderClient(context)
-        if (ActivityCompat.checkSelfPermission(
-                context,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                context,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return
-        }
-        fusedLocationClient.getCurrentLocation(PRIORITY_BALANCED_POWER_ACCURACY,
-            null).addOnSuccessListener { location ->
-            if (location != null) {
-                // Récupérer les données de localisation de l’objet location
-
-
-            }
-        }
-    }
 
     fun updateParkingList(newdata: List<ParkingLot>) {
         data.clear()

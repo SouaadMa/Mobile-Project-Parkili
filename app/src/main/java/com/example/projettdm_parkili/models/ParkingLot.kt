@@ -7,11 +7,13 @@ data class ParkingLot (
     val parking_id : Int,
     val name : String,
     val commune : String,
-    val positionLat : Double,
-    val positionLng : Double,
+    val positionlat : Double,
+    val positionlng : Double,
     val nb_occupiedSpots : Int,
     val nb_totalSpots : Int,
     val priceperhour: Double,
-    val image : String
+    val image : String,
+    var distance : Double ?, /**/
+    var duration : Double ? /**/
 
 ): Serializable

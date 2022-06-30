@@ -3,10 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.projettdm_parkili">
 
-    <uses-permission
-        android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission
-        android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -15,10 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjetTDMParkili">
+
+
         <activity
             android:name=".NavHomeActivity"
-            android:windowSoftInputMode="adjustNothing"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustNothing" />
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
@@ -42,14 +42,14 @@
         </activity>
         <activity
             android:name=".SignUpActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".HomeActivity"
-            android:windowSoftInputMode="adjustNothing"
-            android:exported="true"></activity>
+            android:exported="true"
+            android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".ParkingLotDetailsActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
 
         <service
             android:name=".MyFirebaseMessagingService"

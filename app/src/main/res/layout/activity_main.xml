@@ -60,6 +60,15 @@
         app:srcCompat="@drawable/ic_google__g__logo"
         tools:ignore="VectorDrawableCompat" />
 
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:translationZ="-2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="27dp"
